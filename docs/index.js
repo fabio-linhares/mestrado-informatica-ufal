@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";  // O caminho do seu componente principal
+import App from ".docs/App"; 
 
 ReactDOM.render(<App />, document.getElementById("root"));
