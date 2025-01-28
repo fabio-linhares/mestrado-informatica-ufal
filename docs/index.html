@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mestrado em Informática - UFAL</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   </head>
   <body class="bg-gray-100">
     <div id="root"></div>
 
-    <script src="index.js"></script>
+    <script type="text/babel" src="App.js"></script>
+    <script type="text/babel">
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
   </body>
 </html>
