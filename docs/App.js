@@ -55,10 +55,20 @@ function App() {
 
         <Section id="conteudo" title="Conteúdo do Repositório">
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {["Projetos", "Artigos e Publicações", "Apresentações", "Códigos-fonte", "Documentos de Pesquisa"].map((item, index) => (
+            {[
+              { name: "Projetos", newTab: false, href: "#" },
+              { name: "Artigos e Publicações", newTab: false, href: "#" },
+              { name: "Apresentações", newTab: true, href: "./apresentacoes.html" },
+              { name: "Códigos-fonte", newTab: false, href: "#" },
+              { name: "Documentos de Pesquisa", newTab: false, href: "#" }
+            ].map((item, index) => (
               <li key={index} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <a href={`./${item.toLowerCase().replace(/ /g, '-')}`} className="text-blue-600 hover:text-blue-800 transition duration-300">
-                  {item}
+                <a 
+                  href={item.href} 
+                  className="text-blue-600 hover:text-blue-800 transition duration-300"
+                  {...(item.newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {item.name}
                 </a>
               </li>
             ))}
@@ -70,6 +80,7 @@ function App() {
             <li>Inteligência Artificial</li>
             <li>Aprendizado de Máquina</li>
             <li>Processamento de Linguagem Natural</li>
+            <li>Visão Computacional</li>
           </ul>
         </Section>
 
