@@ -99,7 +99,7 @@ Espera-se que o modelo desenvolvido atinja **uma precisão superior a 89,5%**, f
 ---
 
 ## 📬 **Contato**  
-📩 **E-mail:** fabiolinharez@gmail.com  
+📩 **E-mail:** fl@ic.ufal.br  
 🔗 **LinkedIn:** [linkedin.com/in/fabio-linhares](https://www.linkedin.com/in/fabio-linhares)  
 🐙 **GitHub:** [github.com/fabio-linhares](https://github.com/fabio-linhares)  
 
