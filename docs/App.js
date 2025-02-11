@@ -60,7 +60,8 @@ function App() {
               { name: "Artigos e Publicações", newTab: false, href: "#" },
               { name: "Apresentações", newTab: true, href: "./apresentacoes.html" },
               { name: "Códigos-fonte", newTab: false, href: "#" },
-              { name: "Documentos de Pesquisa", newTab: false, href: "#" }
+              { name: "Documentos de Pesquisa", newTab: false, href: "#" },  
+              { name: "Disciplinas", newTab: false, href: "./disciplinas.html" }
             ].map((item, index) => (
               <li key={index} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                 <a 
