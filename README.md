@@ -113,67 +113,78 @@ Um modelo de classificação que funde as features interpretáveis do Plano CH (
 
 ### **4️⃣ Protocolo Experimental**
 - **Datasets:** 
-  - Treinamento/Validação: FaceForensics++ (FF++)
-  - Teste Zero-Shot: Celeb-DF (v2)
-- **Métricas:** AUC-ROC, EER (vídeo-level), Acurácia/Precisão/Recall/F1 (frame-level)
-- **Robustez:** Degradações controladas (compressão JPEG, ruído Gaussiano)
+
+A seguir estão os datasets utilizados neste trabalho. Para cada um fornecemos uma breve descrição, origem/identificador e observações relevantes para reprodutibilidade e conformidade.
+
+
+#### AI Generated Images - High Quality  
+- **Descrição breve:** Conjunto de imagens de alta qualidade geradas por modelos de síntese de imagens (GANs / diffusion models). Focado em rostos e cenas realistas produzidas por IA; útil para treinar e avaliar classificadores que discriminam imagens sintéticas de imagens reais.  
+- **Origem / identificador:** Kaggle — `shahzaibshazoo/detect-ai-generated-faces-high-quality-dataset`  
+- **Conteúdo típico:** Imagens geradas por IA em alta resolução, agrupadas por fonte/gerador quando disponível; metadados podem incluir rótulos de origem do gerador.  
+- **Uso neste projeto:** Base para avaliação da capacidade do classificador em identificar artefatos de imagens sintetizadas e medir robustez frente a alta qualidade visual.  
+
 
 ---
 
-## � **Datasets Utilizados**
+#### Deepfake and Real Images  
+- **Descrição breve:** Conjunto misto contendo imagens reais e imagens deepfake (manipuladas ou sintetizadas) — indicado para tarefas de classificação binária (real vs. fake) e experimentos de generalização.  
+- **Origem / identificador:** Kaggle — `manjuts98/deepfake-and-real-images`  
+- **Conteúdo típico:** Pares ou coleções de imagens reais e suas respectivas manipulações/deepfakes; pode conter subpastas por classe (real / fake) e metadados sobre método de síntese/forgery.  
+- **Uso neste projeto:** Treino e validação de modelos para detecção de deepfakes com foco em desempenho entre diferentes fontes/fornecedores de manipulação.  
 
-O projeto incorpora múltiplos datasets especializados para garantir robustez e generalização na detecção de deepfakes:
+---
 
-### **🗂️ Dataset 1: Deepfake and Real Images**
-- **Localização:** `/Datasets/1/Deepfake and real images.zip`
-- **Tipo:** Imagens estáticas (deepfake vs. reais)
-- **Aplicação:** Treinamento inicial e validação de features de complexidade-entropia
-- **Características:** Dataset balanceado para análise de padrões ordinais em imagens sintéticas
+- **Métricas:** AUC-ROC, EER (vídeo-level), Acurácia/Precisão/Recall/F1 (frame-level)
+- **Robustez:** Degradações controladas (compressão JPEG, ruído Gaussiano)
 
-### **🗂️ Dataset 2: Detect AI-Generated Faces High-Quality**
-- **Localização:** `/Datasets/2/Detect AI-Generated Faces High-Quality Dataset.zip`
-- **Fonte:** Kaggle - `shahzaibshazoo/detect-ai-generated-faces-high-quality-dataset`
-- **Tipo:** Faces de alta qualidade geradas por IA
-- **Aplicação:** Teste de robustez e validação cross-dataset
-- **Instalação:**
-```python
-import kagglehub
-path = kagglehub.dataset_download("shahzaibshazoo/detect-ai-generated-faces-high-quality-dataset")
-```
+
+---
+
+
+
+
 
 ### **🎯 Datasets de Referência Acadêmica**
-Conforme protocolo PICOC, o projeto também utiliza datasets consolidados:
+Conforme o PICOC, o projeto também utilizará (ao menos é a ideia) datasets consolidados:
 - **FaceForensics++:** Dataset principal para treinamento/validação
 - **Celeb-DF v2:** Avaliação zero-shot de generalização
 - **DFDC:** Validação adicional em cenários desafiadores
+
+---
+- **Métricas:** AUC-ROC, EER (vídeo-level), Acurácia/Precisão/Recall/F1 (frame-level)
+- **Robustez:** Degradações controladas (compressão JPEG, ruído Gaussiano)
+
 
 ---
 
 ## 📚 **Base Teórica e Artigos Fundamentais**
 
 ### **🔬 Artigos Teóricos de Base**
-Localizados em `/docs/artigos/`:
-
-#### **📄 Complexity-Entropy Causality Plane as a Complexity.pdf**
-- **Referência:** Ribeiro, H. V. et al. (2012)
-- **Contribuição:** Fundamentação teórica do Plano CH para análise bidimensional
+#### **📄 Complexity-entropy causality plane as a complexity measure for two-dimensional patterns**
+- **Autores:** Ribeiro, H. V.; Zunino, L.; Lenzi, E. K.; Santoro, P. A.; Mendes, R. S.
+- **Ano:** 2012
+- **Contribuição:** Fundamentação teórica do Plano CH para análise bidimensional de padrões
 - **Aplicação:** Base matemática para extração de features F_CH
 
-#### **📄 Distinguishing noise from chaos.pdf**
+#### **📄 Distinguishing noise from chaos**
+- **Autores:** Schreiber, T.; Schmitz, A.
+- **Ano:** 1996
 - **Contribuição:** Metodologia para separação de dinâmicas determinísticas e estocásticas
 - **Aplicação:** Validação da Hipótese de Separação (H1)
 
-#### **📄 Theory of Statistical Estimation.pdf**
-- **Contribuição:** Princípio da máxima entropia de Jaynes
+#### **📄 Information Theory and Statistical Mechanics**
+- **Autor:** Jaynes, E. T.
+- **Ano:** 1957
+- **Contribuição:** Princípio da máxima entropia para inferência estatística
 - **Aplicação:** Inferência estatística objetiva sobre mídias sintéticas
 
-#### **📄 How-to_conduct_a_systematic_literature_review.pdf**
+#### **📄 How to conduct a systematic literature review: A narrative guide**
+- **Autores:** Mengist, W.; Soromessa, T.; Legese, G.
+- **Ano:** 2020
 - **Contribuição:** Metodologia PICOC para revisão sistemática
 - **Aplicação:** Estruturação da pesquisa bibliográfica
 
----
-
-## 🔍 **Protocolo PICOC: Implementação e Resultados**
+## 🔍 **PICOC: Implementação e Resultados**
 
 Para estruturar sistematicamente a revisão da literatura, utilizaremos o protocolo **PICOC (Population, Intervention, Comparison, Outcomes, Context)**, que fornece um framework robusto para a formulação de questões de pesquisa e busca bibliográfica:
 
@@ -218,11 +229,7 @@ Para estruturar sistematicamente a revisão da literatura, utilizaremos o protoc
 
 
 
-
-
-
-
-#### **📄 Artigos Selecionados (Primeira Avaliação)**
+#### **📄 Artigos Selecionados (Primeira avaliação em andamento)**
 
 **Surveys e Reviews Fundamentais**
 
@@ -312,9 +319,10 @@ Para estruturar sistematicamente a revisão da literatura, utilizaremos o protoc
 ---
 
 
-## ❓ **Questões de Pesquisa (QA)**
+## ❓ **Questões de Pesquisa (QP)**
 
-### **🔍 Questão Principal (QP)**
+### **🔍 Questão Principal:**
+
 **"Como a análise de complexidade-entropia pode aprimorar a detecção de mídias sintéticas em vídeos, superando as limitações de generalização dos métodos atuais baseados em deep learning?"**
 
 ### **📋 Questões Secundárias (QS)**
@@ -331,8 +339,7 @@ Para estruturar sistematicamente a revisão da literatura, utilizaremos o protoc
 
 **QS6:** Como as características temporais dos vídeos deepfake se manifestam através da análise de séries temporais de complexidade-entropia?
 
-### **📊 Critérios de Avaliação da Literatura (Quality Assessment)**
-Baseados em análise em `/docs/picoc/preparacao/perguntas_avaliacao`:
+### **📊 Critérios de Avaliação da Literatura (QA)**
 
 #### **🔬 Rigor Metodológico**
 
@@ -377,71 +384,31 @@ O projeto utiliza **Python** como linguagem principal, gerenciado através do **
 
 #### **Instalação do Ambiente:**
 ```bash
-```
+# Criar ambiente conda para detecção de mídias sintéticas
+conda create -n ia-product python=3.9 -y
 
-### **📊 Pacote ordpy**
-```
-
----
-
-## �🔧 **Ambiente de Desenvolvimento**
-
-### **🐍 Python com Anaconda**
-O projeto utiliza **Python** como linguagem principal, gerenciado através do **Anaconda** para garantir reprodutibilidade e isolamento de dependências.
-
-#### **Instalação do Ambiente:**
-```bash
-# Criar ambiente conda
-conda create -n a python=3.9
-conda activate deepfake-detection
+# Ativar o ambiente
+conda activate ia-product
 
 # Instalar dependências principais
-conda install numpy pandas matplotlib scikit-learn
-conda install pytorch torchvision torchaudio -c pytorch
-pip install transformers ordpy
-```
+conda install numpy pandas matplotlib scikit-learn jupyter -y
 
-### **📊 Pacote ordpy**
-```
+# Instalar PyTorch (versão compatível com CUDA se disponível)
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia -y
 
-### **📊 Pacote ordpy**
-O projeto utiliza intensivamente o pacote **ordpy** para análise de entropia de permutação e complexidade estatística.
+# Instalar bibliotecas de visão computacional e ML
+pip install opencv-python pillow transformers timm
 
-#### **Sobre o ordpy:**
-
-#### **Sobre o ordpy:**
-- **Repositório:** [arthurpessa/ordpy](https://github.com/arthurpessa/ordpy)
-- **Documentação:** [ordpy.readthedocs.io](https://ordpy.readthedocs.io/)
-- **Referência:** Pessa, A. A. B., & Ribeiro, H. V. (2021). ordpy: A Python package for data analysis with permutation entropy and ordinal network methods. *Chaos*, 31, 063110.
-
-#### **Funcionalidades Utilizadas:**
-- `ordpy.complexity_entropy()` - Cálculo do Plano Complexidade-Entropia
-- `ordpy.permutation_entropy()` - Entropia de permutação para séries temporais e imagens
-- `ordpy.two_by_two_patterns()` - Padrões ordinais 2×2 para análise de imagens
-- `ordpy.ordinal_distribution()` - Distribuições ordinais para análise estatística
-
-#### **Instalação:**
-```bash
+# Instalar ordpy para análise de entropia de permutação
 pip install ordpy
+
+# Instalar bibliotecas adicionais para o projeto
+pip install xgboost lightgbm seaborn plotly
+
+# Verificar instalação
+python -c "import torch, ordpy, cv2; print('Ambiente configurado com sucesso!')"
 ```
 
-#### **Exemplo de Uso:**
-```python
-import ordpy
-import numpy as np
-
-# Análise de complexidade-entropia para imagem
-H, C = ordpy.complexity_entropy(image_data, dx=2, dy=2)
-print(f"Entropia: {H:.4f}, Complexidade: {C:.4f}")
-
-# Padrões ordinais 2x2
-patterns = ordpy.two_by_two_patterns(image_data, 
-                                   taux=1, tauy=1, 
-                                   overlapping=True, 
-                                   tie_patterns=True)
-```
-
----
 
 ## 📊 **Cronograma**
 
