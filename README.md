@@ -274,21 +274,37 @@ Localizados em `/docs/picoc/aprovados/1-11/`:
 Baseados em análise em `/docs/picoc/preparacao/perguntas_avaliacao`:
 
 #### **🔬 Rigor Metodológico**
+
 **Q1:** O estudo reporta métricas de avaliação claras e apropriadas para a tarefa (ex: Acurácia, AUC-ROC, EER)?
+- **Análise:** Avalia o **Rigor** e a **Qualidade do Relato**. Garante que os estudos utilizam métricas consolidadas, permitindo comparação justa e quantitativa.
 
 **Q2:** O estudo utiliza datasets públicos e bem conhecidos para validação (ex: FaceForensics++, Celeb-DF)?
+- **Análise:** Avalia a **Credibilidade** e o **Rigor**. O uso de datasets públicos é crucial para reprodutibilidade e validação em cenários reconhecidos pela comunidade científica.
 
 **Q3:** O método proposto é comparado com pelo menos um outro método de detecção já existente (baseline)?
+- **Análise:** Mede a **Relevância** e o **Rigor** do estudo. Sem comparação com baseline, é impossível aferir se a contribuição é de fato um avanço.
 
 #### **🎯 Robustez e Aplicabilidade**
+
 **Q4:** O estudo avalia a robustez do detector contra perturbações comuns (ex: compressão, ruído, variações de iluminação)?
+- **Análise:** Diretamente ligada ao "Outcome" do PICOC (aumento da robustez). Avalia a **Credibilidade** e **Relevância** para aplicações no mundo real.
 
 **Q5:** A metodologia proposta é descrita com detalhes suficientes para permitir a sua replicação?
+- **Análise:** Avalia a **Reprodutibilidade**. Se um artigo não descreve claramente a metodologia, sua contribuição científica é limitada.
 
 #### **📈 Credibilidade Científica**
+
 **Q6:** Os autores discutem as limitações do estudo e as ameaças à validade dos resultados?
+- **Análise:** O reconhecimento de limitações demonstra **maturidade acadêmica** e aumenta a credibilidade, indicando compreensão profunda do método.
 
 **Q7:** Os objetivos da pesquisa, as contribuições e as questões de pesquisa do estudo estão claramente definidos?
+- **Análise:** Garante que o artigo tem **foco claro** e contribuição bem definida, evitando trabalhos com escopo vago ou objetivos pouco claros.
+
+### **🎯 Avaliação Holística**
+Estas 7 questões criam uma avaliação completa que analisa:
+- **"O quê"** (resultados e métricas)
+- **"Como"** (metodologia e relato)
+- **"Por quê"** (relevância e limitações)
 
 ### **📚 Artigos em Análise Detalhada (QA)**
 Localizados em `/docs/picoc/qa/`:
