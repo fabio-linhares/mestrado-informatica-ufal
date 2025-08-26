@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "Continual Face Forgery Detection via Historical Distribution Preserving",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O estudo reporta ACC (accuracy) e AUC como métricas primárias, e introduz AVG e PRE, métricas bem definidas e apropriadas para o contexto de aprendizado contínuo[cite: 3179, 3183, 3186]."
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "A validação utiliza múltiplos datasets públicos e amplamente conhecidos, como FaceForensics++, Celeb-DF, DFDC e Wild-Deepfake[cite: 3160, 3161, 3162, 3163]."
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O método proposto é extensivamente comparado com doze métodos de aprendizado contínuo estado-da-arte, incluindo LwF, iCaRL, FRETAL e Foster[cite: 3198, 3199, 3201, 3202, 3205]."
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Não",
+      "pontuacao": 0.0,
+      "justificativa": "O artigo foca na robustez contra novos tipos de ataques ao longo do tempo (aprendizado contínuo) e não apresenta uma avaliação de robustez contra perturbações comuns como compressão de imagem ou ruído."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "A metodologia é descrita com detalhes de implementação, incluindo backbone, otimizador, taxa de aprendizado e hiperparâmetros específicos do UAP, além de disponibilizar o código publicamente[cite: 2891, 3192, 3194, 3195]."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Não",
+      "pontuacao": 0.0,
+      "justificativa": "O artigo não apresenta uma seção ou discussão explícita sobre as limitações do método proposto ou sobre as ameaças à validade dos resultados apresentados."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "Os objetivos e as contribuições são claramente definidos em uma lista com marcadores no final da introdução, detalhando a proposta do framework HDP e do benchmark CFFD[cite: 2974, 2975, 2976]."
+    }
+  ],
+  "pontuacao_total": 5.0,
+  "recomendacao_final": "INCLUIR"
+}

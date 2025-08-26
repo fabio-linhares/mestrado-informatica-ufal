@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "Customized Transformer Adapter With Frequency Masking for Deepfake Detection",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O estudo reporta métricas de avaliação claras e apropriadas para a tarefa, como Accuracy (Acc), Area Under the Curve (AUC) e Equal Error Rate (EER), conforme mencionado na seção IV-A."
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "A validação é realizada em múltiplos datasets públicos e conhecidos, incluindo FaceForensics++, Celeb-DF, WildDeepfake, DFDC e DiffSwap."
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O método proposto (CUTA) é extensivamente comparado com vários métodos estado-da-arte, como Xception, F³-Net, RECCE, SFDG e DSRL, com resultados detalhados nas Tabelas I a VII."
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "A seção IV-B6 ('Robustness Analysis') e a Figura 5 avaliam explicitamente a robustez do detector contra perturbações como Compressão, Contraste, Saturação e Pixelização."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "A metodologia é descrita com detalhes suficientes, incluindo a arquitetura da rede (Figura 3 e 4), detalhes da implementação (backbone, otimizador, taxa de aprendizado) e a disponibilização do código-fonte em um repositório público."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Parcialmente",
+      "pontuacao": 0.5,
+      "justificativa": "O artigo reconhece que o desempenho é inferior a um método específico (FA-VIT) no cenário intra-dataset e que os módulos propostos aumentam os parâmetros, mas não dedica uma seção formal para discutir as limitações gerais do estudo."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "As contribuições do estudo são claramente definidas em uma lista com marcadores no final da introdução, destacando a proposta do framework CUTA, o módulo FDM e os adaptadores ViT customizados."
+    }
+  ],
+  "pontuacao_total": 6.5,
+  "recomendacao_final": "INCLUIR"
+}

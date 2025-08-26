@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "SUMI-IFL: An Information-Theoretic Framework for Image Forgery Localization with Sufficiency and Minimality Constraints",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O estudo adota explicitamente o F1 score e a Área Sob a Curva (AUC) como métricas de avaliação, que são apropriadas para a tarefa de localização de falsificação de imagem[cite: 335]."
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "A validação é realizada em múltiplos datasets públicos e conhecidos na área, como DEFACTO-12, CASIAv2, NIST16 e outros listados na Tabela 1[cite: 331, 334]."
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O método SUMI-IFL é comparado com sete outros métodos de detecção estado-da-arte, incluindo MMFusion, EITL-Net e MVSS-Net, com resultados apresentados nas Tabelas 2 e 3[cite: 342]."
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O artigo inclui uma seção de 'Robustness Evaluation' que testa o desempenho do modelo contra compressão JPEG e desfoque Gaussiano, com resultados mostrados na Figura 5[cite: 362, 392]."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "A metodologia é detalhada com a arquitetura da rede, derivações teóricas para as funções de perda e hiperparâmetros de treinamento (tamanho do lote, otimizador, taxa de aprendizado), permitindo a sua replicação[cite: 151, 337]."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Não",
+      "pontuacao": 0.0,
+      "justificativa": "O artigo conclui resumindo suas contribuições e desempenho superior, mas não inclui uma discussão sobre as limitações do método ou possíveis ameaças à validade dos resultados."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "As contribuições do estudo são claramente definidas em uma lista com marcadores no final da introdução, destacando o framework proposto e suas restrições de suficiência e minimalidade[cite: 79]."
+    }
+  ],
+  "pontuacao_total": 6.0,
+  "recomendacao_final": "INCLUIR"
+}

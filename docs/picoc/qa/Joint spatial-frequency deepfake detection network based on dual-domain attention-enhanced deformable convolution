@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "Joint spatial-frequency deepfake detection network based on dual-domain attention-enhanced deformable convolution",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O artigo reporta explicitamente Acurácia (ACC), Precisão, Recall e a Área Sob a Curva (AUC) como métricas de avaliação, apresentando os resultados em tabelas detalhadas[cite: 16, 413]."
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O estudo utiliza dois dos datasets mais conhecidos e publicamente disponíveis para a tarefa: FaceForensics++ e Celeb-DF (V2)[cite: 15, 363]."
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O método proposto (HFDCDNet) é extensivamente comparado com vários métodos state-of-the-art, como Xception, F3-Net, e AW-MSA, em múltiplas tabelas[cite: 435, 532, 534, 548]."
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Parcialmente",
+      "pontuacao": 0.5,
+      [cite_start]"justificativa": "O estudo avalia a robustez à compressão (usando a versão c23 do FaceForensics++) e a generalização (teste cross-dataset), mas os próprios autores admitem como limitação que a robustez sob forte degradação de qualidade ou ruído não foi explorada[cite: 406, 553, 637]."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "A metodologia é descrita em grande detalhe na Seção 3, com diagramas de arquitetura, formulações matemáticas e uma promessa de liberação do código, indicando alta probabilidade de replicação[cite: 102, 223, 646]."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "Sim, o artigo possui uma seção na conclusão que discute explicitamente as limitações do método, como a robustez a ruído e a ausência de detecção em áudio[cite: 636, 637, 638]."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "Os objetivos são claramente declarados no resumo e na introdução, focando em superar as limitações de redes tradicionais através da combinação de características espaciais e de frequência[cite: 9, 39]."
+    }
+  ],
+  "pontuacao_total": 6.5,
+  "recomendacao_final": "INCLUIR"
+}

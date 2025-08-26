@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "Exploring coordinated motion patterns of facial landmarks for deepfake video detection",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O artigo menciona a utilização de AUC (Area Under Curve) como métrica de desempenho na seção de conclusão, que é uma métrica padrão e apropriada para a tarefa de detecção. [cite: 828]"
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O estudo afirma que a avaliação foi realizada em três benchmarks amplamente utilizados: FaceForensics++, Celeb-DF e DFDC. [cite: 819]"
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O método proposto (LTDRM) é integrado a vários métodos baseados em vídeo existentes (CNN, Mamba e Transformer), e o desempenho é comparado com os modelos originais para mostrar a melhoria. [cite: 796, 797]"
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Não",
+      "pontuacao": 0.0,
+      "justificativa": "Com base nos trechos fornecidos, não há menção de que o estudo tenha avaliado a robustez do detector contra perturbações comuns, como compressão ou ruído."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Parcialmente",
+      "pontuacao": 0.5,
+      "justificativa": "O artigo descreve a arquitetura geral e as ideias centrais da metodologia, mas o texto fornecido não apresenta os detalhes matemáticos e de implementação suficientes para permitir uma replicação completa."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Não",
+      "pontuacao": 0.0,
+      "justificativa": "As seções disponíveis, incluindo a conclusão, focam nos resultados positivos e contribuições, sem apresentar uma discussão sobre as limitações do estudo ou ameaças à validade."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O artigo apresenta uma lista clara e com marcadores no final da introdução, resumindo as três principais contribuições da pesquisa. [cite: 798, 799, 801, 803]"
+    }
+  ],
+  "pontuacao_total": 4.5,
+  "recomendacao_final": "INCLUIR"
+}

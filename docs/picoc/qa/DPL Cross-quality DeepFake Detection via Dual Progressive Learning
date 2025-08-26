@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "DPL: Cross-quality DeepFake Detection via Dual Progressive Learning",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O estudo declara explicitamente que os métodos são avaliados pela métrica Area Under Curve (AUC), que é apropriada para a tarefa de detecção."
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "A validação é realizada em múltiplos datasets públicos e conhecidos na área, incluindo FaceForensics++, CelebDFv2, FaceShifter e FFIW10K."
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O método proposto (DPL) é comparado com oito métodos estado-da-arte, como F3Net, SRM, SPSL, UIA-VIT e QAD, com resultados apresentados nas Tabelas 1, 2, 3 e 4."
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O artigo inclui uma 'Robustness Analysis' na seção 4.4, avaliando o desempenho do modelo contra quatro tipos de perturbações (Saturação, Contraste, Blockwise, Ruído) com cinco níveis de severidade."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "A metodologia é descrita com detalhes suficientes, incluindo a arquitetura geral, os módulos específicos (VQI, FII, FSM), o processo de treinamento em duas etapas e os hiperparâmetros (backbone, otimizador, taxa de aprendizado)."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Não",
+      "pontuacao": 0.0,
+      "justificativa": "O artigo conclui resumindo os resultados positivos e a eficácia do método, mas não há uma discussão sobre as possíveis limitações do estudo ou ameaças à validade."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "As contribuições são claramente definidas em uma lista com marcadores no final da introdução, destacando o novo framework DPL, o módulo FSM e o pipeline de treinamento."
+    }
+  ],
+  "pontuacao_total": 6.0,
+  "recomendacao_final": "INCLUIR"
+}

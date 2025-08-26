@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "Unravelling Digital Forgeries: A Systematic Survey on Image Manipulation Detection and Localization",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O artigo afirma que fornecerá uma análise de medidas de desempenho e as define, mencionando que apêndices específicos detalham essas métricas[cite: 888, 958]."
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O estudo apresenta a Tabela 8, que resume e descreve diversos datasets públicos utilizados na área, incluindo CASIA, DEFACTO e RAISE[cite: 891, 905]."
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "Sendo uma revisão sistemática, o artigo compara extensivamente múltiplos métodos existentes, servindo o propósito de análise comparativa em vez de propor um novo método[cite: 9, 128, 145]."
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O estudo discute explicitamente a robustez dos detectores contra perturbações, dedicando seções à análise de compressão JPEG, reamostragem e outros processos de pós-processamento que afetam a detecção[cite: 237, 238, 239, 440]."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Parcialmente",
+      "pontuacao": 0.5,
+      [cite_start]"justificativa": "Como uma revisão, o artigo descreve as metodologias de outros estudos com referências, mas não fornece detalhes suficientes para replicá-las diretamente sem consultar as fontes originais[cite: 266, 332]."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "O artigo dedica a Seção 5.2 para discutir as lacunas de pesquisa e limitações das ferramentas atuais, como a incapacidade de generalizar para cenários e transformações não vistas durante o treinamento[cite: 929, 930]."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      [cite_start]"justificativa": "Os objetivos e contribuições são claramente delineados na Seção 1.3, 'Key Contributions', onde os autores listam os principais pontos de sua pesquisa[cite: 138, 140, 141, 142, 143, 145]."
+    }
+  ],
+  "pontuacao_total": 6.5,
+  "recomendacao_final": "INCLUIR"
+}

@@ -1,0 +1,49 @@
+{
+  "titulo_artigo": "Detecting face tampering in videos using deepfake forensics",
+  "avaliacao_qa": [
+    {
+      "questao": "Q1",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O estudo reporta métricas de avaliação claras e apropriadas, como Accuracy (Tabelas 3, 4 e 6) e AUC (Tabela 7)."
+    },
+    {
+      "questao": "Q2",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O estudo utiliza o dataset público e bem conhecido FaceForensics++ para validação, conforme mencionado na seção 4.1."
+    },
+    {
+      "questao": "Q3",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "A Tabela 7 apresenta uma análise comparativa do método proposto com nove outros trabalhos existentes, utilizando a AUC como métrica de desempenho."
+    },
+    {
+      "questao": "Q4",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O estudo avalia a robustez do detector contra a degradação da qualidade, testando o modelo com reduções de 20% e 50% na resolução dos frames, com resultados na Tabela 6."
+    },
+    {
+      "questao": "Q5",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "A metodologia é descrita com detalhes suficientes, incluindo a arquitetura da rede MesoNet (Figura 3), o algoritmo de agregação de imagem (Algoritmo 1) e os hiperparâmetros de treinamento."
+    },
+    {
+      "questao": "Q6",
+      "resposta": "Parcialmente",
+      "pontuacao": 0.5,
+      "justificativa": "O artigo menciona as limitações de outros trabalhos, mas apenas sugere indiretamente a necessidade de mais ferramentas para o próprio modelo na conclusão, sem uma discussão aprofundada sobre as suas limitações específicas."
+    },
+    {
+      "questao": "Q7",
+      "resposta": "Sim",
+      "pontuacao": 1.0,
+      "justificativa": "O objetivo de desenvolver um modelo eficaz para detecção de manipulação facial em vídeos de diferentes qualidades é claramente declarado no resumo e na introdução."
+    }
+  ],
+  "pontuacao_total": 6.5,
+  "recomendacao_final": "INCLUIR"
+}
