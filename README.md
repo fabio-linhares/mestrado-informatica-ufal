@@ -1,9 +1,13 @@
-# Sobre
-Repositório para armazenar estudos, projetos e materiais relacionados ao Mestrado em Informática na Universidade Federal de Alagoas (UFAL). Inclui códigos-fonte, documentos, apresentações e outros recursos desenvolvidos durante o curso.
+<div align="center">
+  <img src="docs/img/logo.png" alt="Logo da UFAL" width="200"/>
+</div>
 
----  
 
 # 🎓 **Projeto de Mestrado**  
+
+Repositório para armazenar estudos, projetos e materiais relacionados ao Mestrado em Informática na Universidade Federal de Alagoas (UFAL). Inclui códigos-fonte, documentos, apresentações e outros recursos desenvolvidos durante o curso.
+
+
 ## Universidade Federal de Alagoas (UFAL) - Instituto de Computação  
 ### Programa de Pós-Graduação em Informática  
 
@@ -173,7 +177,145 @@ Um modelo de classificação que funde as features interpretáveis do Plano CH (
 
 ---
 
-## 🔧 **Ambiente de Desenvolvimento**
+## � **Datasets Utilizados**
+
+O projeto incorpora múltiplos datasets especializados para garantir robustez e generalização na detecção de deepfakes:
+
+### **🗂️ Dataset 1: Deepfake and Real Images**
+- **Localização:** `/Datasets/1/Deepfake and real images.zip`
+- **Tipo:** Imagens estáticas (deepfake vs. reais)
+- **Aplicação:** Treinamento inicial e validação de features de complexidade-entropia
+- **Características:** Dataset balanceado para análise de padrões ordinais em imagens sintéticas
+
+### **🗂️ Dataset 2: Detect AI-Generated Faces High-Quality**
+- **Localização:** `/Datasets/2/Detect AI-Generated Faces High-Quality Dataset.zip`
+- **Fonte:** Kaggle - `shahzaibshazoo/detect-ai-generated-faces-high-quality-dataset`
+- **Tipo:** Faces de alta qualidade geradas por IA
+- **Aplicação:** Teste de robustez e validação cross-dataset
+- **Instalação:**
+```python
+import kagglehub
+path = kagglehub.dataset_download("shahzaibshazoo/detect-ai-generated-faces-high-quality-dataset")
+```
+
+### **🎯 Datasets de Referência Acadêmica**
+Conforme protocolo PICOC, o projeto também utiliza datasets consolidados:
+- **FaceForensics++:** Dataset principal para treinamento/validação
+- **Celeb-DF v2:** Avaliação zero-shot de generalização
+- **DFDC:** Validação adicional em cenários desafiadores
+
+---
+
+## 📚 **Base Teórica e Artigos Fundamentais**
+
+### **🔬 Artigos Teóricos de Base**
+Localizados em `/docs/artigos/`:
+
+#### **📄 Complexity-Entropy Causality Plane as a Complexity.pdf**
+- **Referência:** Ribeiro, H. V. et al. (2012)
+- **Contribuição:** Fundamentação teórica do Plano CH para análise bidimensional
+- **Aplicação:** Base matemática para extração de features F_CH
+
+#### **📄 Distinguishing noise from chaos.pdf**
+- **Contribuição:** Metodologia para separação de dinâmicas determinísticas e estocásticas
+- **Aplicação:** Validação da Hipótese de Separação (H1)
+
+#### **📄 Theory of Statistical Estimation.pdf**
+- **Contribuição:** Princípio da máxima entropia de Jaynes
+- **Aplicação:** Inferência estatística objetiva sobre mídias sintéticas
+
+#### **📄 How-to_conduct_a_systematic_literature_review.pdf**
+- **Contribuição:** Metodologia PICOC para revisão sistemática
+- **Aplicação:** Estruturação da pesquisa bibliográfica
+
+---
+
+## 🔍 **Protocolo PICOC: Implementação e Resultados**
+
+### **📋 Preparação da Revisão Sistemática**
+Localizada em `/docs/picoc/preparacao/`:
+
+#### **🎯 Bases de Dados Utilizadas**
+- **Web of Science:** Coleção Principal (1945-presente) - 9.000+ periódicos indexados
+- **IEEE Xplore:** Biblioteca Digital completa (1988-presente) - 6M+ documentos
+- **Scopus (Elsevier):** Base multidisciplinar abrangente
+- **ScienceDirect:** 3.800+ periódicos e 37.000+ títulos de livros
+
+#### **📝 Artigos Selecionados (25 Principais)**
+Conforme lista em `/docs/picoc/preparacao/artigos selecionados`:
+
+**Surveys e Reviews Fundamentais:**
+- Khan A.A. (2025): "A survey on multimedia-enabled deepfake detection" - *Discover Computing*
+- Kadha V. (2025): "Unravelling Digital Forgeries: A Systematic Survey" - *ACM Computing Surveys*
+
+**Métodos de Análise Temporal:**
+- Zhang Y. (2025): "Exploring coordinated motion patterns of facial landmarks" - *Applied Soft Computing*
+- Zhu C. (2024): "Deepfake detection via inter-frame inconsistency recomposition" - *Pattern Recognition*
+
+**Abordagens de Análise de Frequência:**
+- Qiusong L. (2025): "Joint spatial-frequency deepfake detection network" - *Applied Intelligence*
+- Shi Z. (2025): "Customized Transformer Adapter With Frequency Masking" - *IEEE TIFS*
+
+**Métodos Baseados em Teoria da Informação:**
+- Sheng Z. (2025): "SUMI-IFL: An Information-Theoretic Framework" - *AAAI 2025*
+- Sudarsan M. (2025): "LEAD-AI: Lightweight Entropy Analysis" - *SPIE*
+
+### **✅ Artigos Aprovados para Revisão**
+Localizados em `/docs/picoc/aprovados/1-11/`:
+- **11 artigos** selecionados após aplicação dos critérios de QA
+- Cada pasta contém: PDF completo, arquivo .bib, e metadados HTML
+- Critérios de aprovação baseados nas 7 questões de avaliação (Q1-Q7)
+
+---
+
+## ❓ **Questões de Avaliação (QA) - Refinadas**
+
+### **📊 Critérios de Qualidade dos Estudos**
+Baseados em análise em `/docs/picoc/preparacao/perguntas_avaliacao`:
+
+#### **🔬 Rigor Metodológico**
+**Q1:** O estudo reporta métricas de avaliação claras e apropriadas para a tarefa (ex: Acurácia, AUC-ROC, EER)?
+
+**Q2:** O estudo utiliza datasets públicos e bem conhecidos para validação (ex: FaceForensics++, Celeb-DF)?
+
+**Q3:** O método proposto é comparado com pelo menos um outro método de detecção já existente (baseline)?
+
+#### **🎯 Robustez e Aplicabilidade**
+**Q4:** O estudo avalia a robustez do detector contra perturbações comuns (ex: compressão, ruído, variações de iluminação)?
+
+**Q5:** A metodologia proposta é descrita com detalhes suficientes para permitir a sua replicação?
+
+#### **📈 Credibilidade Científica**
+**Q6:** Os autores discutem as limitações do estudo e as ameaças à validade dos resultados?
+
+**Q7:** Os objetivos da pesquisa, as contribuições e as questões de pesquisa do estudo estão claramente definidos?
+
+### **📚 Artigos em Análise Detalhada (QA)**
+Localizados em `/docs/picoc/qa/`:
+
+#### **Surveys e Estado-da-Arte:**
+- "A survey on multimedia-enabled deepfake detection state-of-the-art tools and techniques..."
+- "Unravelling Digital Forgeries A Systematic Survey on Image Manipulation Detection..."
+
+#### **Métodos Baseados em Transformers:**
+- "Customized Transformer Adapter With Frequency Masking for Deepfake Detection"
+- "WaveConViT: Wavelet-Based Convolutional Vision Transformer..."
+
+#### **Abordagens de Análise Temporal e Espacial:**
+- "Exploring coordinated motion patterns of facial landmarks for deepfake video detection"
+- "Joint spatial-frequency deepfake detection network based on dual-domain attention..."
+
+#### **Métodos Baseados em Teoria da Informação:**
+- "LEAD-AI lightweight entropy analysis for distinguishing AI-generated images..."
+- "SUMI-IFL An Information-Theoretic Framework for Image Forgery Localization..."
+
+#### **Análise de Robustez:**
+- "DPL Cross-quality DeepFake Detection via Dual Progressive Learning"
+- "Detecting face tampering in videos using deepfake forensics"
+
+---
+
+## �🔧 **Ambiente de Desenvolvimento**
 
 ### **🐍 Python com Anaconda**
 O projeto utiliza **Python** como linguagem principal, gerenciado através do **Anaconda** para garantir reprodutibilidade e isolamento de dependências.
@@ -181,7 +323,7 @@ O projeto utiliza **Python** como linguagem principal, gerenciado através do **
 #### **Instalação do Ambiente:**
 ```bash
 # Criar ambiente conda
-conda create -n deepfake-detection python=3.9
+conda create -n a python=3.9
 conda activate deepfake-detection
 
 # Instalar dependências principais
@@ -268,93 +410,55 @@ O projeto está planejado para execução ao longo de **24 meses**, dividido em 
 
 ---
 
-## � **Referências Bibliográficas**
+## 📚 **Referências Bibliográficas**
 
-[1] **AGARWAL, S.; EL-GAALY, T.; FARID, H.** Detecting face synthesis using convolutional neural networks and image quality assessment. *IEEE Transactions on Information Forensics and Security*, v. 15, p. 3044-3055, 2020.
+AGARWAL, S. et al. Detecting face synthesis using convolutional neural networks and image quality assessment. **IEEE Transactions on Information Forensics and Security**, v. 15, p. 3044-3055, 2020.
 
-[2] **AFCHAR, D. et al.** MesoNet: a Compact Facial Video Forgery Detection Network. In: *IEEE International Workshop on Information Forensics and Security (WIFS)*. IEEE, 2018. p. 1-7.
+AFCHAR, D. et al. MesoNet: a Compact Facial Video Forgery Detection Network. In: **IEEE International Workshop on Information Forensics and Security (WIFS)**. Hong Kong: IEEE, 2018. p. 1-7. DOI: [10.1109/WIFS.2018.8630761](https://doi.org/10.1109/WIFS.2018.8630761).
 
-[3] **AMERINI, I. et al.** Deepfake-o-meter: An open platform for deepfake detection. In: *Proceedings of the 29th ACM International Conference on Multimedia*. 2021. p. 103-112.
+AMERINI, I. et al. Deepfake-o-meter: An open platform for deepfake detection. In: **Proceedings of the 29th ACM International Conference on Multimedia**. Virtual Event: ACM, 2021. p. 103-112. DOI: [10.1145/3474085.3475667](https://doi.org/10.1145/3474085.3475667).
 
-[4] **ANDERSON, R. J.** Security engineering: a guide to building dependable distributed systems. 3. ed. Indianapolis: Wiley, 2020.
+ANDERSON, R. J. **Security Engineering: A Guide to Building Dependable Distributed Systems**. 3. ed. Hoboken: John Wiley & Sons, 2020.
 
-[5] **ANTUNES, P. et al.** Leveraging ordinal patterns for improved deepfake detection. *Neural Computing and Applications*, v. 34, n. 18, p. 15479-15493, 2022.
+ANTUNES, P. et al. Leveraging ordinal patterns for improved deepfake detection. **Neural Computing and Applications**, v. 34, n. 18, p. 15479-15493, 2022. DOI: [10.1007/s00521-022-07043-5](https://doi.org/10.1007/s00521-022-07043-5).
 
-[6] **BANDT, C.; POMPE, B.** Permutation entropy: a natural complexity measure for time series. *Physical Review Letters*, v. 88, n. 17, p. 174102, 2002.
+BANDT, C.; POMPE, B. Permutation entropy: a natural complexity measure for time series. **Physical Review Letters**, v. 88, n. 17, p. 174102, 2002. DOI: [10.1103/PhysRevLett.88.174102](https://doi.org/10.1103/PhysRevLett.88.174102).
 
-[7] **BONETTINI, N. et al.** Video face manipulation detection through ensemble of CNNs. In: *International Conference on Pattern Recognition (ICPR)*. IEEE, 2020. p. 5012-5019.
+BONETTINI, N. et al. Video face manipulation detection through ensemble of CNNs. In: **International Conference on Pattern Recognition (ICPR)**. Milan: IEEE, 2020. p. 5012-5019. DOI: [10.1109/ICPR48806.2021.9412711](https://doi.org/10.1109/ICPR48806.2021.9412711).
 
-[8] **BROWN, T. et al.** Language models are few-shot learners. In: *Advances in Neural Information Processing Systems*, v. 33, p. 1877-1901, 2020.
+BROWN, T. et al. Language models are few-shot learners. In: **Advances in Neural Information Processing Systems**, v. 33, p. 1877-1901, 2020. Disponível em: [https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf](https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf). Acesso em: 26 ago. 2025.
 
-[9] **CALDELLI, R.; BECARELLI, R.; AMERINI, I.** Image origin classification based on social network provenance. *IEEE Transactions on Information Forensics and Security*, v. 12, n. 6, p. 1299-1308, 2017.
+CALDELLI, R.; BECARELLI, R.; AMERINI, I. Image origin classification based on social network provenance. **IEEE Transactions on Information Forensics and Security**, v. 12, n. 6, p. 1299-1308, 2017. DOI: [10.1109/TIFS.2017.2656842](https://doi.org/10.1109/TIFS.2017.2656842).
 
-[10] **CHEN, S. et al.** The eyes tell all: detecting fake face images via the eyes. *IEEE Access*, v. 8, p. 149915-149924, 2020.
+CHEN, S. et al. The eyes tell all: detecting fake face images via the eyes. **IEEE Access**, v. 8, p. 149915-149924, 2020. DOI: [10.1109/ACCESS.2020.3016867](https://doi.org/10.1109/ACCESS.2020.3016867).
 
-[11] **CHOLLET, F. et al.** Xception: Deep learning with depthwise separable convolutions. In: *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition*. 2017. p. 1251-1258.
+CHOLLET, F. Xception: Deep learning with depthwise separable convolutions. In: **Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition**. Honolulu: IEEE, 2017. p. 1251-1258. DOI: [10.1109/CVPR.2017.195](https://doi.org/10.1109/CVPR.2017.195).
 
-[12] **DOLHANSKY, B. et al.** The deepfake detection challenge (DFDC) dataset and benchmark. *arXiv preprint arXiv:2006.07397*, 2020.
+DOLHANSKY, B. et al. The DeepFake Detection Challenge (DFDC) Dataset and Benchmark. **arXiv preprint** arXiv:2006.07397, 2020. Disponível em: [https://arxiv.org/abs/2006.07397](https://arxiv.org/abs/2006.07397). Acesso em: 26 ago. 2025.
 
-[13] **DOSOVITSKIY, A. et al.** An image is worth 16x16 words: Transformers for image recognition at scale. In: *International Conference on Learning Representations*. 2021.
+DOSOVITSKIY, A. et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. In: **International Conference on Learning Representations (ICLR)**. Vienna: OpenReview, 2021. Disponível em: [https://openreview.net/forum?id=YicbFdNTTy](https://openreview.net/forum?id=YicbFdNTTy). Acesso em: 26 ago. 2025.
 
-[14] **DURALL, R. et al.** Watch your up-convolution: CNN based generative deep neural networks are failing to reproduce spectral distributions. In: *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2020. p. 7890-7899.
+DURALL, R. et al. Watch your up-convolution: CNN based generative deep neural networks are failing to reproduce spectral distributions. In: **Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition**. Seattle: IEEE, 2020. p. 7890-7899. DOI: [10.1109/CVPR42600.2020.00791](https://doi.org/10.1109/CVPR42600.2020.00791).
 
-[15] **FRANK, J.; EISENHOFER, T.; SCHÖNHERR, L.** Leveraging frequency analysis for deep fake image recognition. In: *International Conference on Machine Learning*. PMLR, 2020. p. 3247-3258.
+FRANK, J.; EISENHOFER, T.; SCHÖNHERR, L. Leveraging frequency analysis for deep fake image recognition. In: **International Conference on Machine Learning**. PMLR, 2020. p. 3247-3258. Disponível em: [http://proceedings.mlr.press/v119/frank20a.html](http://proceedings.mlr.press/v119/frank20a.html). Acesso em: 26 ago. 2025.
 
-[16] **GOODFELLOW, I. et al.** Generative adversarial nets. In: *Advances in Neural Information Processing Systems*, v. 27, 2014.
+GOODFELLOW, I. et al. Generative Adversarial Nets. In: **Advances in Neural Information Processing Systems**, v. 27, p. 2672-2680, 2014. Disponível em: [https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf](https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf). Acesso em: 26 ago. 2025.
 
-[17] **GUARNERA, L. et al.** Deepfake video detection through optical flow based CNN. In: *Proceedings of the IEEE/CVF International Conference on Computer Vision Workshops*. 2019. p. 1205-1207.
+GUARNERA, L. et al. Deepfake video detection through optical flow based CNN. In: **Proceedings of the IEEE/CVF International Conference on Computer Vision Workshops**. Seoul: IEEE, 2019. p. 1205-1207. DOI: [10.1109/ICCVW.2019.00152](https://doi.org/10.1109/ICCVW.2019.00152).
 
-[18] **HE, K. et al.** Deep residual learning for image recognition. In: *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition*. 2016. p. 770-778.
+HE, K. et al. Deep residual learning for image recognition. In: **Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition**. Las Vegas: IEEE, 2016. p. 770-778. DOI: [10.1109/CVPR.2016.90](https://doi.org/10.1109/CVPR.2016.90).
 
-[19] **HEUSEL, M. et al.** GANs trained by a two time-scale update rule converge to a local Nash equilibrium. In: *Advances in Neural Information Processing Systems*, v. 30, 2017.
+HEUSEL, M. et al. GANs trained by a two time-scale update rule converge to a local Nash equilibrium. In: **Advances in Neural Information Processing Systems**, v. 30, 2017. Disponível em: [https://proceedings.neurips.cc/paper/2017/file/8a1d694707eb0fefe65871369074926d-Paper.pdf](https://proceedings.neurips.cc/paper/2017/file/8a1d694707eb0fefe65871369074926d-Paper.pdf). Acesso em: 26 ago. 2025.
 
-[20] **JIANG, L. et al.** Celeb-DF: A large-scale challenging dataset for deepfake forensics. In: *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2020. p. 3207-3216.
+JIANG, L. et al. Celeb-DF: A large-scale challenging dataset for deepfake forensics. In: **Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition**. Seattle: IEEE, 2020. p. 3207-3216. DOI: [10.1109/CVPR42600.2020.00327](https://doi.org/10.1109/CVPR42600.2020.00327).
 
-[21] **KARRAS, T. et al.** Analyzing and improving the image quality of StyleGAN. In: *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2020. p. 8110-8119.
+KARRAS, T. et al. Analyzing and improving the image quality of StyleGAN. In: **Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition**. Seattle: IEEE, 2020. p. 8110-8119. DOI: [10.1109/CVPR42600.2020.00813](https://doi.org/10.1109/CVPR42600.2020.00813).
 
-[22] **LI, L. et al.** Face X-ray for more general face forgery detection. In: *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2020. p. 5001-5010.
+LI, L. et al. Face X-ray for more general face forgery detection. In: **Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition**. Seattle: IEEE, 2020. p. 5001-5010. DOI: [10.1109/CVPR42600.2020.00505](https://doi.org/10.1109/CVPR42600.2020.00505).
 
-[23] **LI, Y. et al.** In ictu oculi: Exposing AI generated fake face videos by detecting eye blinking. In: *IEEE International Workshop on Information Forensics and Security (WIFS)*. IEEE, 2018. p. 1-7.
+LI, Y. et al. In ictu oculi: Exposing AI generated fake face videos by detecting eye blinking. In: **IEEE International Workshop on Information Forensics and Security (WIFS)**. Hong Kong: IEEE, 2018. p. 1-7. DOI: [10.1109/WIFS.2018.8630787](https://doi.org/10.1109/WIFS.2018.8630787).
 
-[24] **LINHARES, F. et al.** Complexity-entropy analysis of deepfake detection: A novel approach using permutation entropy. In: *Brazilian Conference on Intelligent Systems*. 2023. p. 245-259.
-
-[25] **LOPEZ-PAZ, D.; OQUAB, M.** Revisiting classifier two-sample tests. In: *International Conference on Learning Representations*. 2017.
-
-[26] **MARTIN, M. T.; PLASTINO, A.; ROSSO, O. A.** Generalized Statistical Complexity Measures: Geometrical and Analytical Properties. *Physica A*, v. 369, p. 439-462, 2006.
-
-[27] **MASSOLI, F. V. et al.** DFDC-P: A large-scale dataset for deepfake detection. *Pattern Recognition Letters*, v. 147, p. 78-85, 2021.
-
-[28] **MCCLOSKEY, S.; ALBRIGHT, M.** Detecting GAN-generated imagery using saturation cues. In: *IEEE International Conference on Image Processing (ICIP)*. IEEE, 2019. p. 4584-4588.
-
-[29] **NARUNIEC, J. et al.** High-resolution neural face swapping for visual effects. In: *Computer Graphics Forum*, v. 39, n. 4, p. 173-184. Wiley Online Library, 2020.
-
-[30] **NGUYEN, H. H. et al.** FakeSpotter: A simple but robust baseline for spotting AI-synthesized fake faces. In: *Proceedings of the 29th International Joint Conference on Artificial Intelligence*. 2020. p. 3444-3451.
-
-[31] **PÉREZ-GARCÍA, A. et al.** Data augmentation techniques in CNNs using functional transformation. *Applied Sciences*, v. 8, n. 10, p. 1692, 2018.
-
-[32] **PESSA, A. A. B.; RIBEIRO, H. V.** ordpy: A Python package for data analysis with permutation entropy and ordinal network methods. *Chaos*, v. 31, n. 6, p. 063110, 2021.
-
-[33] **RIBEIRO, H. V. et al.** Complexity-Entropy Causality Plane as a Complexity Measure for Two-Dimensional Patterns. *PLOS ONE*, v. 7, p. e40689, 2012.
-
-[34] **ROSSLER, A. et al.** FaceForensics++: Learning to detect manipulated facial images. In: *Proceedings of the IEEE/CVF International Conference on Computer Vision*. 2019. p. 1-11.
-
-[35] **SMITH, J.; DOE, A.** Deep learning approaches for digital forensics: A comprehensive survey. *ACM Computing Surveys*, v. 54, n. 3, p. 1-37, 2021.
-
-[36] **TAN, M.; LE, Q.** EfficientNet: Rethinking model scaling for convolutional neural networks. In: *International Conference on Machine Learning*. PMLR, 2019. p. 6105-6114.
-
-[37] **THIES, J. et al.** Face2Face: Real-time face capture and reenactment of RGB videos. In: *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition*. 2016. p. 2387-2395.
-
-[38] **VASWANI, A. et al.** Attention is all you need. In: *Advances in Neural Information Processing Systems*, v. 30, 2017.
-
-[39] **WANG, K. et al.** Detecting both machine and human created fake face images. In: *Proceedings of the 2nd International Conference on Multimedia Information Processing and Retrieval*. 2019. p. 229-234.
-
-[40] **YANG, X. et al.** Exposing deep fakes using inconsistent head poses. In: *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*. IEEE, 2019. p. 8261-8265.
-
-[41] **YU, N. et al.** The eyes tell all: detecting fake face images via analyzing eye movements. *IEEE Transactions on Information Forensics and Security*, v. 16, p. 3443-3456, 2021.
-
-[42] **ZHANG, X. et al.** Detecting fake images using DCT coefficient analysis. *Signal Processing*, v. 145, p. 98-110, 2018.
-
----
+LOPEZ-PAZ, D.; OQUAB, M. Revisiting classifier two-sample tests. In: **International Conference on Learning Representations**. Toulon: OpenReview, 2017. Disponível em: [https://openreview.net/forum?id=SJkXfE5xx](https://openreview.net/forum?id=SJkXfE5xx). Acesso em: 26 ago. 2025.
 
 ## 📬 **Contato**
 
@@ -367,5 +471,5 @@ O projeto está planejado para execução ao longo de **24 meses**, dividido em 
 
 **Trabalho de Mestrado - Programa de Pós-Graduação em Informática**  
 **Universidade Federal de Alagoas (UFAL)**  
-**Orientador:** Prof. Dr. [Nome do Orientador]  
-**Ano:** 2024
+**Orientador:** Prof.ª Dr.ª Fabiane da Silva Queiroz  
+**Ano:** 2025
