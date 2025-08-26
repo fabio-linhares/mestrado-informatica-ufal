@@ -63,7 +63,7 @@ A **entropia de permutação** (Bandt e Pompe) é uma medida robusta e computaci
 
 ### **Potencial de Detecção**
 
-Acreditamos que a aplicação dessas ferramentas aos produtos de IA permitirá capturar as **"digitais" dinâmicas da manipulação** de forma mais precisa. Por exemplo, a suavidade excessiva de certas áreas manipuladas ou a ausência de padrões ordinais esperados em movimentos faciais podem ser detectadas como desvios em medidas de complexidade-entropia.
+Acreditamos que a aplicação dessas ferramentas aos produtos de IA permitirá capturar as **"digitais" dinâmicas da manipulação** de forma mais precisa. Por exemplo, a suavidade excessiva de certas áreas manipuladas ou a ausência de padrões ordinais esperados em movimentos faciais podem ser detectadas como desvios em medidas de complexidade-entropia. Além disso, a Teoria da Estimação Estatística, particularmente o princípio da máxima entropia de Jaynes, fornecerá a base formal para inferir as distribuições de probabilidade que melhor representam os dados, garantindo que as inferências sobre a natureza das mídias sintéticas sejam as menos preconceituosas e mais objetivas possíveis.
 
 ---
 
