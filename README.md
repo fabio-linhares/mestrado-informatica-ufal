@@ -423,7 +423,39 @@ Estas 7 questões criam uma avaliação completa que analisa:
 ## 🔧 **Ambiente de Desenvolvimento**
 
 ### **🐍 Ambiente Anaconda**
-O projeto utiliza **Python** como linguagem principal, gerenciado através do **Anaconda** para garantir reprodutibilidade e isolamento de dependências.
+O projeto utiliza **Python** como linguagem principal, gerenciado através do **Anaconda** para garantir reprodutibilidade e isolamento de dependências. Segue abaixo uma justificativa objetiva de cada pacote no contexto do projeto.
+
+### Núcleo científico e EDA
+- numpy: base numérica vetorizada para processamento de matrizes/imagens, cálculo de entropia/complexidade e features CH.
+- pandas: manipulação tabular para ground truth, logs de experimentos, métricas e consolidação de QA.
+- matplotlib: gráficos estáticos (Plano CH H×C, curvas ROC/PR, matrizes de confusão).
+- scikit-learn: baselines clássicos, pré-processamento (StandardScaler, PCA), divisão/validação, métricas (ROC/AUC/F1), pipelines.
+- jupyter: prototipagem reprodutível de notebooks (EDA, análises do Plano CH, experimentos controlados).
+
+### Deep Learning com aceleração
+- pytorch: framework principal para modelos de visão (inferência/treino), integração com GPU.
+- torchvision: transforms/datasets utilitários e modelos CV de referência; pré-processamento consistente para ViTs/CNNs.
+- torchaudio: suporte a cenários multimodais áudio‑vídeo (sincronia lábio‑áudio), pipelines de áudio quando necessário.
+- pytorch-cuda=11.8: runtime CUDA compatível para acelerar PyTorch em GPUs NVIDIA.
+
+### Visão computacional e modelos de imagem
+- opencv-python: I/O de vídeo (captura de frames), redimensionamento, conversões de cor; base do pipeline para extrair H,C frame‑a‑frame.
+- pillow: manipulação leve de imagens; backend comum para torchvision; salvar/carregar com formatos diversos.
+- transformers: acesso a ViT/CLIP e outros modelos da Hugging Face; extração do embedding [CLS] para F_ViT.
+- timm: coleção ampla de modelos de visão (inclui ViT‑B/16 e variantes), pesos pré‑treinados e utilitários de feature extraction.
+
+### Teoria da Informação / Complexidade
+- ordpy: entropia de permutação e medidas associadas; cálculo eficiente das coordenadas (H,C) do Plano Complexidade‑Entropia.
+
+### Classificação tabular e visualização avançada
+- xgboost: gradient boosting para classificar o vetor híbrido [F_CH, F_ViT]; baseline forte e rápido (GPU opcional).
+- lightgbm: alternativa GBDT eficiente para grandes volumes; comparação com XGBoost no tabular híbrido.
+- seaborn: visualizações estatísticas de alto nível (distribuições de H e C, pairplots, heatmaps).
+- plotly: gráficos interativos (exploração do Plano CH, inspeção de casos e dashboards HTML).
+
+A seguir, os comandos de instalação do ambiente (conda/pip) estão na próxima seção.
+
+---
 
 #### **Instalação do Ambiente:**
 ```bash
