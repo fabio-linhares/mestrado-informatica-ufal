@@ -374,6 +374,34 @@ Estas 7 questões criam uma avaliação completa que analisa:
 - **"Como"** (metodologia e relato)
 - **"Por quê"** (relevância e limitações)
 
+### **📊 Resultados da Avaliação QA**
+
+📋 **Arquivo Completo de Resultados:** [RESULTADOS_QA.md](docs/picoc/qa/RESULTADOS_QA.md)  
+🔍 **Índice de Navegação:** [INDICE_ARTIGOS.md](docs/picoc/qa/INDICE_ARTIGOS.md)
+
+> **💡 Navegação:** Clique nos links da tabela abaixo para acessar diretamente os PDFs dos artigos ou suas avaliações detalhadas. Cada artigo foi avaliado usando 7 critérios rigorosos de qualidade acadêmica.
+
+#### **🏆 Artigos Aprovados (10/10 - 100%)**
+
+| # | Artigo | Pontuação | PDF | Avaliação |
+|---|--------|-----------|-----|-----------|
+| 1 | **Customized Transformer Adapter With Frequency Masking** | 6.5/7.0 | [📄 PDF](docs/picoc/aprovados/8/Customized_Transformer_Adapter_With_Frequency_Masking_for_Deepfake_Detection.pdf) | [📊 QA](docs/picoc/qa/Customized%20Transformer%20Adapter%20With%20Frequency%20Masking%20for%20Deepfake%20Detection) |
+| 2 | **Joint spatial-frequency deepfake detection network** | 6.5/7.0 | [📄 PDF](docs/picoc/aprovados/2/s10489-025-06761-2.pdf) | [📊 QA](docs/picoc/qa/Joint%20spatial-frequency%20deepfake%20detection%20network%20based%20on%20dual-domain%20attention-enhanced%20deformable%20convolution) |
+| 3 | **Detecting face tampering in videos using deepfake forensics** | 6.5/7.0 | [📄 PDF](docs/picoc/aprovados/11/Detecting%20face%20tampering%20in%20videos%20using%20deepfake%20forensics.pdf) | [📊 QA](docs/picoc/qa/Detecting%20face%20tampering%20in%20videos%20using%20deepfake%20forensics) |
+| 4 | **Unravelling Digital Forgeries: Systematic Survey** | 6.5/7.0 | [📄 PDF](docs/picoc/aprovados/3/Unravelling%20Digital%20Forgeries:%20A%20Systematic%20Survey%20on%20Image%20Manipulation%20Detection%20and%20Localization.pdf) | [📊 QA](docs/picoc/qa/Unravelling%20Digital%20Forgeries%20A%20Systematic%20Survey%20on%20Image%20Manipulation%20Detection%20and%20Localization) |
+| 5 | **DPL: Cross-quality DeepFake Detection** | 6.0/7.0 | [📄 PDF](docs/picoc/aprovados/1/s10791-025-09550-0.pdf) | [📊 QA](docs/picoc/qa/DPL%20Cross-quality%20DeepFake%20Detection%20via%20Dual%20Progressive%20Learning) |
+| 6 | **SUMI-IFL: Information-Theoretic Framework** | 6.0/7.0 | [📄 PDF](docs/picoc/aprovados/5/32054-Article%20Text-36122-1-2-20250410.pdf) | [📊 QA](docs/picoc/qa/SUMI-IFL%20An%20Information-Theoretic%20Framework%20for%20Image%20Forgery%20Localization%20with%20Sufficiency%20and%20Minimality%20Constraints) |
+| 7 | **LEAD-AI: lightweight entropy analysis** | 5.0/7.0 | [📄 PDF](docs/picoc/aprovados/9/LEAD-AI_%20lightweight%20entropy%20analysis%20for%20distinguishing%20AI-generated%20images%20from%20genuine%20photographs.pdf) | [📊 QA](docs/picoc/qa/LEAD-AI%20lightweight%20entropy%20analysis%20for%20distinguishing%20AI-generated%20images%20from%20genuine%20photographs) |
+| 8 | **Exploring coordinated motion patterns** | 4.5/7.0 | [📄 PDF](docs/picoc/aprovados/6/Exploring%20coordinated%20motion%20patterns%20of%20facial%20landmarks%20for%20deepfake%20video%20detection%20-%20ScienceDirect.pdf) | [📊 QA](docs/picoc/qa/Exploring%20coordinated%20motion%20patterns%20of%20facial%20landmarks%20for%20deepfake%20video%20detection) |
+| 9 | **Markov Observation Models and Deepfakes** | 4.5/7.0 | [📄 PDF](docs/picoc/aprovados/4/mathematics-13-02128-v2.pdf) | [📊 QA](docs/picoc/qa/Markov%20Observation%20Models%20and%20Deepfakes) |
+| 10 | **A survey on multimedia-enabled deepfake detection** | 4.5/7.0 | 📚 Survey | [📊 QA](docs/picoc/qa/A%20survey%20on%20multimedia-enabled%20deepfake%20detection%20state-of-the-art%20tools%20and%20techniques,%20emerging%20trends,%20current%20challenges%20&%20limitations,%20and%20future%20directions) |
+
+#### **📈 Estatísticas Gerais**
+- **Taxa de Aprovação:** 100% (10/10 artigos)
+- **Pontuação Média:** 5.8/7.0
+- **Melhor Desempenho:** Q1 e Q7 (100% de conformidade)
+- **Área de Melhoria:** Q6 - Discussão de limitações (40% de conformidade)
+
 ---
 
 
