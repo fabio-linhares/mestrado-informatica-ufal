@@ -8,98 +8,197 @@ Repositório para armazenar estudos, projetos e materiais relacionados ao Mestra
 ### Programa de Pós-Graduação em Informática  
 
 ## 📌 **Título**  
-**Detecção de Vídeos Criados ou Alterados por Inteligência Artificial através de Técnicas Avançadas de Visão Computacional e Aprendizado de Máquina**  
+**Detecção Avançada de Mídias Sintéticas em Vídeos mediante Análise de Complexidade-Entropia**  
 
-👨‍🎓 **Aluno:** Fábio Sant’Anna Linhares  
+👨‍🎓 **Aluno:** Fábio Sant'Anna Linhares  
 👩‍🏫 **Orientadora:** Prof.ª Dr.ª Fabiane da Silva Queiroz  
 🔬 **Linha de Pesquisa:** Computação Visual e Inteligente  
+🎯 **Tema de Pesquisa:** Visão Computacional: Análise, Caracterização e Classificação de Padrões Dinâmicos e Estruturais em Mídias Sintéticas
 
 ---
 
 ## 📝 **Resumo**  
 
-A crescente disseminação de **mídias sintéticas**, criadas ou alteradas por Inteligência Artificial (IA), representa um grande desafio para a **segurança da informação** e a **veracidade dos conteúdos online**. A capacidade dessas tecnologias de gerar vídeos altamente realistas e convincentes torna difícil distinguir conteúdos autênticos de falsificações, levando a implicações sociais, políticas e jurídicas.  
+A proliferação de **mídias sintéticas**, popularmente conhecidas como deepfakes, representa um desafio crescente para a segurança da informação e a confiança no ecossistema digital. A rápida evolução dos modelos generativos, como **Redes Adversariais Generativas (GANs)** e **Modelos de Difusão**, torna os métodos de detecção baseados em artefatos específicos rapidamente obsoletos.
 
-Este projeto busca aprimorar as técnicas de **detecção de vídeos manipulados** por IA, combinando **visão computacional** e **aprendizado de máquina**. A metodologia baseia-se na abordagem proposta por **Rafique et al. (2023)**, que utiliza **Análise de Nível de Erro (ELA) e Redes Neurais Convolucionais (CNNs)** para identificar alterações digitais. No entanto, nosso trabalho avança essa abordagem ao integrar técnicas de **análise de textura** e regras especializadas de **detecção forense**.  
+Este projeto propõe uma **mudança de paradigma** na detecção de mídias sintéticas. Em vez de tratar imagens geradas por IA como imagens autênticas com defeitos, hipotetizamos que elas são o produto de um **sistema dinâmico complexo e determinístico**. Argumentamos que tais sistemas imprimem uma **"textura estatística"** única e mensurável, caracterizada por uma assinatura específica no espaço de complexidade-entropia.
 
-O objetivo é desenvolver uma estrutura de detecção capaz de superar a **precisão de 89,5%** dos métodos existentes, contribuindo significativamente para a mitigação dos desafios impostos pelas mídias sintéticas.  
+Propomos o **Plano Causalidade Entropia-Complexidade (Plano CH)** como a ferramenta principal para capturar essa assinatura fundamental, visando criar um detector que seja, por construção, mais generalizável e interpretável. Esta abordagem combina a robustez teórica da **Teoria da Informação** com a capacidade de representação dos modelos de **aprendizado profundo**.
 
 ---
 
 ## 🎯 **Objetivos do Projeto**  
 
-O projeto visa desenvolver uma estrutura eficiente para **detecção e classificação de mídias sintéticas em vídeos**, utilizando técnicas de visão computacional e aprendizado de máquina.  
+### **🔹 Objetivo Geral**
+Desenvolver e validar um **framework híbrido e generalizável** para a detecção de vídeos deepfake, fundamentado na sinergia entre a análise de complexidade estatística e a extração de features de aprendizado profundo.
 
-### 🔹 **Objetivos Específicos**  
-✔ **Identificar e classificar técnicas de detecção** de mídias sintéticas.  
-✔ **Compilar e combinar múltiplos métodos** para aprimorar a detecção.  
-✔ **Utilizar CNNs pré-treinadas** (GoogLeNet, ResNet18, SqueezeNet) para extrair padrões visuais de vídeos manipulados.  
-✔ **Implementar Análise de Nível de Erro (ELA)** para identificar regiões manipuladas digitalmente.  
-✔ **Testar diversos algoritmos de classificação** (SVM, Random Forest, XGBoost, MLP, entre outros) para avaliar a eficácia das técnicas.  
-✔ **Aprimorar a precisão de detecção**, superando os 89,5% alcançados pelos métodos anteriores.  
+### **🔹 Objetivos Específicos**  
+1. **Pipeline de Extração:** Implementar um pipeline robusto para a extração das coordenadas (H,C) do Plano CH a partir de frames de vídeo, incluindo uma análise de sensibilidade aos parâmetros de embedding dx e dy.
 
----
+2. **Mapeamento de Assinaturas:** Mapear e caracterizar as "assinaturas de complexidade" de vídeos reais e falsos de múltiplos datasets (e.g., FaceForensics++, Celeb-DF) no Plano CH, validando empiricamente a Hipótese de Separação.
 
-## 📚 **Justificativa**  
+3. **Análise de Robustez:** Avaliar a robustez das features (H,C) a perturbações comuns do mundo real, como compressão de vídeo, adição de ruído e variações de iluminação.
 
-O avanço das tecnologias de geração de vídeos sintéticos levou à criação de deepfakes **quase indistinguíveis da realidade**. Segundo **Rodrigues et al. (2024)**, esses conteúdos têm sido usados para manipulação política, disseminação de desinformação e crimes cibernéticos.  
+4. **Modelo Híbrido:** Construir, treinar e validar um modelo híbrido que combine F_CH e F_ViT, testando sua capacidade de generalização contra um modelo baseline.
 
-Estudos como o de **Vahdati et al. (2024)** e **Xu et al. (2024)** demonstram que detectores atuais são **menos eficazes para vídeos do que para imagens**. Modelos tradicionais de CNNs são eficientes na detecção de deepfakes em imagens, mas falham na análise de padrões temporais presentes em vídeos.  
-
-Além disso, segundo **Pei et al. (2024)**, os **modelos de difusão** emergiram como uma tecnologia revolucionária para geração de deepfakes, exigindo o aprimoramento dos métodos de detecção. Este projeto propõe uma abordagem inovadora que combina **análise de padrões texturais, ELA e redes neurais profundas**, aumentando a robustez do processo de detecção.  
+5. **Interpretabilidade:** Oferecer explicações e insights sobre os mecanismos de detecção, interpretando como as medidas capturam as anomalias.
 
 ---
 
-## 🛠 **Metodologia**  
+## 🔬 **Hipóteses de Pesquisa**
 
-A pesquisa será baseada em um conjunto de **etapas experimentais**, conforme descrito abaixo:  
+### **H1 (Hipótese de Separação):**
+Imagens geradas por diferentes modelos de IA (e.g., GANs, Modelos de Difusão) e imagens autênticas ocuparão regiões estatisticamente separáveis no Plano Causalidade Entropia-Complexidade.
 
-### **1️⃣ Seleção de Dados**  
-- Uso de bases públicas, como **FaceForensics++ (FF++)**, contendo vídeos reais e manipulados.  
-- Aplicação de pré-processamento para padronizar a qualidade dos vídeos.  
+### **H2 (Hipótese de Eficiência Informacional):**
+O vetor de features bidimensional F_CH=[H,C], derivado do Plano CH, constitui um estimador estatisticamente mais eficiente da classe da imagem (real vs. falsa) do que features baseadas em artefatos, como as derivadas da Análise de Nível de Erro (ELA).
 
-### **2️⃣ Extração de Características**  
-- Uso de **CNNs pré-treinadas (GoogLeNet, ResNet18, SqueezeNet)** para extrair características de alto nível.  
-- Implementação da **Análise de Nível de Erro (ELA)** para identificar padrões anômalos.  
-- Aplicação de **análise de textura** para capturar artefatos gerados por IA.  
+### **H3 (Hipótese de Sinergia Híbrida):**
+Um modelo de classificação que funde as features interpretáveis do Plano CH (F_CH) com as features de representação global aprendidas por um Vision Transformer (F_ViT) exibirá desempenho superior em acurácia e generalização.
 
-### **3️⃣ Treinamento de Modelos**  
-- Treinamento de modelos de classificação como **SVM, Random Forest, XGBoost, LightGBM, MLP**.  
-- Otimização dos hiperparâmetros para melhorar a precisão e reduzir falsos positivos.  
+---
 
-### **4️⃣ Validação e Avaliação**  
-- Testes com conjuntos de dados independentes para validar a eficácia do modelo.  
-- Uso de métricas como **precisão, recall e F1-score** para avaliação do desempenho.  
+## 🛠 **Metodologia Proposta**
+
+### **1️⃣ Pipeline de Extração de Features Estatísticas (F_CH)**
+- **Implementação:** Conversão de frames para escala de cinza e varredura por janela deslizante de tamanho dx×dy
+- **Parâmetros:** Investigação de dimensões de embedding dx e dy (e.g., 2×2, 3×2) respeitando (dx⋅dy)!≪W⋅H
+- **Saída:** Vetor [H,C] para cada frame, constituindo features de baixa dimensão, computacionalmente eficientes e interpretáveis
+
+### **2️⃣ Pipeline de Extração de Features de Deep Learning (F_ViT)**
+- **Arquitetura:** Vision Transformer (ViT) pré-treinado (ViT-Base/16) como extrator "congelado"
+- **Extração:** Vetor de embedding do token `[CLS]` da última camada para formar F_ViT
+- **Justificativa:** Complementaridade conceitual entre padrões ordinais locais (PE2D) e dependências globais (ViT)
+
+### **3️⃣ Fusão de Features e Classificação**
+- **Método:** Concatenação simples: F_hybrid = [F_CH, F_ViT]
+- **Classificador:** Gradient Boosting (XGBoost/LightGBM) para dados tabulares heterogêneos
+- **Baseline:** Modelo utilizando apenas F_ViT para validação da Hipótese de Sinergia
+
+### **4️⃣ Protocolo Experimental**
+- **Datasets:** 
+  - Treinamento/Validação: FaceForensics++ (FF++)
+  - Teste Zero-Shot: Celeb-DF (v2)
+- **Métricas:** AUC-ROC, EER (vídeo-level), Acurácia/Precisão/Recall/F1 (frame-level)
+- **Robustez:** Degradações controladas (compressão JPEG, ruído Gaussiano)
+
+---
+
+## 🔧 **Ambiente de Desenvolvimento**
+
+### **🐍 Python com Anaconda**
+O projeto utiliza **Python** como linguagem principal, gerenciado através do **Anaconda** para garantir reprodutibilidade e isolamento de dependências.
+
+#### **Instalação do Ambiente:**
+```bash
+# Criar ambiente conda
+conda create -n deepfake-detection python=3.9
+conda activate deepfake-detection
+
+# Instalar dependências principais
+conda install numpy pandas matplotlib scikit-learn
+conda install pytorch torchvision torchaudio -c pytorch
+pip install transformers ordpy
+```
+
+### **📊 Pacote ordpy**
+O projeto utiliza intensivamente o pacote **ordpy** para análise de entropia de permutação e complexidade estatística.
+
+#### **Sobre o ordpy:**
+- **Repositório:** [arthurpessa/ordpy](https://github.com/arthurpessa/ordpy)
+- **Documentação:** [ordpy.readthedocs.io](https://ordpy.readthedocs.io/)
+- **Referência:** Pessa, A. A. B., & Ribeiro, H. V. (2021). ordpy: A Python package for data analysis with permutation entropy and ordinal network methods. *Chaos*, 31, 063110.
+
+#### **Funcionalidades Utilizadas:**
+- `ordpy.complexity_entropy()` - Cálculo do Plano Complexidade-Entropia
+- `ordpy.permutation_entropy()` - Entropia de permutação para séries temporais e imagens
+- `ordpy.two_by_two_patterns()` - Padrões ordinais 2×2 para análise de imagens
+- `ordpy.ordinal_distribution()` - Distribuições ordinais para análise estatística
+
+#### **Instalação:**
+```bash
+pip install ordpy
+```
+
+#### **Exemplo de Uso:**
+```python
+import ordpy
+import numpy as np
+
+# Análise de complexidade-entropia para imagem
+H, C = ordpy.complexity_entropy(image_data, dx=2, dy=2)
+print(f"Entropia: {H:.4f}, Complexidade: {C:.4f}")
+
+# Padrões ordinais 2x2
+patterns = ordpy.two_by_two_patterns(image_data, 
+                                   taux=1, tauy=1, 
+                                   overlapping=True, 
+                                   tie_patterns=True)
+```
+
+---
+
+## 📊 **Cronograma**
+
+O projeto está planejado para execução ao longo de **24 meses**, dividido em quatro fases:
+
+### **📚 Fase 1 (Meses 1-6): Fundamentação e Implementação**
+- Revisão aprofundada da literatura
+- Configuração do ambiente computacional (Anaconda + ordpy)
+- Implementação dos pipelines F_CH e F_ViT
+- Familiarização com datasets
+
+### **🔬 Fase 2 (Meses 7-12): Experimentação**
+- Extração de features nos datasets FF++ e Celeb-DF
+- Análise de sensibilidade dos parâmetros PE2D
+- Caracterização das assinaturas de complexidade
+- Validação da Hipótese de Separação (H1)
+
+### **🤖 Fase 3 (Meses 13-18): Desenvolvimento**
+- Desenvolvimento do modelo híbrido
+- Implementação do modelo baseline
+- Treinamento e otimização
+- Validação das hipóteses H2 e H3
+
+### **📊 Fase 4 (Meses 19-24): Validação e Documentação**
+- Protocolo de validação final
+- Testes de generalização e robustez
+- Análise dos resultados
+- Redação da dissertação
 
 ---
 
 ## 📈 **Resultados Esperados**  
 
-Espera-se que o modelo desenvolvido atinja **uma precisão superior a 89,5%**, fornecendo uma abordagem mais eficaz para a **detecção de deepfakes em vídeos**. Os principais benefícios incluem:  
-
-✔ **Aprimoramento da detecção** de mídias sintéticas com novas técnicas.  
-✔ **Criação de um framework híbrido** combinando diferentes métodos de análise.  
-✔ **Contribuição para a segurança da informação**, reduzindo a disseminação de vídeos falsificados.  
-✔ **Publicação dos resultados** em conferências e periódicos científicos.  
+- **Validação Empírica:** Confirmação das três hipóteses centrais do projeto
+- **Framework Inovador:** Desenvolvimento de um detector híbrido fundamentado em teoria
+- **Generalização Superior:** Desempenho robusto em datasets não vistos durante treinamento
+- **Interpretabilidade:** Explicações claras dos mecanismos de detecção
+- **Contribuição Científica:** Publicações em conferências e periódicos de alto impacto
+- **Código Aberto:** Disponibilização do framework para a comunidade científica
 
 ---
 
-## 🔬 **Referências**  
+## 🔬 **Principais Referências**
 
-📄 **Rafique, R. et al. (2023).** *Deep Fake Detection and Classification Using Error-Level Analysis and Deep Learning.* Scientific Reports. Disponível em: [https://doi.org/10.1038/s41598-023-34629-3](https://doi.org/10.1038/s41598-023-34629-3)  
+📄 **Ribeiro, H. V. et al. (2012).** *Complexity-Entropy Causality Plane as a Complexity Measure for Two-Dimensional Patterns.* PLOS ONE, 7, e40689.
 
-📄 **Rodrigues, G. S. et al. (2024).** *Uma Abordagem a DeepFake via Algoritmos de Aprendizagem Profunda.* Anais do ENCOMPIF. Disponível em: [https://sol.sbc.org.br/index.php/encompif/article/view/25238](https://sol.sbc.org.br/index.php/encompif/article/view/25238)  
+📄 **Pessa, A. A. B., & Ribeiro, H. V. (2021).** *ordpy: A Python package for data analysis with permutation entropy and ordinal network methods.* Chaos, 31, 063110.
 
-📄 **Pei, G. et al. (2024).** *Deepfake Generation and Detection: A Benchmark and Survey.* arXiv. Disponível em: [https://arxiv.org/pdf/2403.17881](https://arxiv.org/pdf/2403.17881)  
+📄 **Bandt, C., & Pompe, B. (2002).** *Permutation entropy: A Natural Complexity Measure for Time Series.* Physical Review Letters, 88, 174102.
 
-📄 **Vahdati, D. S. et al. (2024).** *Beyond Deepfake Images: Detecting AI-Generated Videos.* CVPR 2024 Workshops. Disponível em: [https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Vahdati](https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Vahdati)  
+📄 **Celeb-DF (2020).** *Celeb-DF: A Large-scale Challenging Dataset for DeepFake Forensics.* CVPR.
 
-📄 **Xu, S. et al. (2024).** *VASA-1: Lifelike Audio-Driven Talking Faces Generated in Real Time.* arXiv. Disponível em: [https://arxiv.org/pdf/2404.10667](https://arxiv.org/pdf/2404.10667)  
+📄 **FaceForensics++ (2019).** *FaceForensics++: Learning to Detect Manipulated Facial Images.* ICCV.
+
+📄 **Vaswani, A. et al. (2017).** *Attention is all you need.* Advances in Neural Information Processing Systems.
+
+📄 **Martin, M. T., Plastino, A., & Rosso, O. A. (2006).** *Generalized Statistical Complexity Measures: Geometrical and Analytical Properties.* Physica A, 369, 439–462.
 
 ---
 
 ## 📬 **Contato**  
 📩 **E-mail:** fl@ic.ufal.br  
 🔗 **LinkedIn:** [linkedin.com/in/fabio-linhares](https://www.linkedin.com/in/fabio-linhares)  
-🐙 **GitHub:** [github.com/fabio-linhares](https://github.com/fabio-linhares)  
-
+🐙 **GitHub:** [github.com/fabio-linhares](https://github.com/fabio-linhares)
+🌐 **Site do Projeto:** [fabiolinhares.com.br/ufal/orientacao/preprojeto](https://www.fabiolinhares.com.br/ufal/orientacao/preprojeto/preprojeto.html)
