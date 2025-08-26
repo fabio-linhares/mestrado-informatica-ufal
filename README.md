@@ -14,7 +14,7 @@ Repositório para armazenar estudos, projetos e materiais relacionados ao Mestra
 ## 📌 **Título**  
 **Detecção Avançada de Mídias Sintéticas em Vídeos mediante Análise de Complexidade-Entropia**  
 
-👨‍🎓 **Aluno:** Fábio Sant'Anna Linhares  
+👨‍🎓 **Aluno:** Fábio Linhares  
 👩‍🏫 **Orientadora:** Prof.ª Dr.ª Fabiane da Silva Queiroz  
 🔬 **Linha de Pesquisa:** Computação Visual e Inteligente  
 🎯 **Tema de Pesquisa:** Visão Computacional: Análise, Caracterização e Classificação de Padrões Dinâmicos e Estruturais em Mídias Sintéticas
@@ -60,63 +60,6 @@ A **entropia de permutação** (Bandt e Pompe) é uma medida robusta e computaci
 Acreditamos que a aplicação dessas ferramentas aos produtos de IA permitirá capturar as **"digitais" dinâmicas da manipulação** de forma mais precisa. Por exemplo, a suavidade excessiva de certas áreas manipuladas ou a ausência de padrões ordinais esperados em movimentos faciais podem ser detectadas como desvios em medidas de complexidade-entropia.
 
 Além disso, a **Teoria da Estimação Estatística**, particularmente o **princípio da máxima entropia de Jaynes**, fornecerá a base formal para inferir as distribuições de probabilidade que melhor representam os dados, garantindo que as inferências sobre a natureza das mídias sintéticas sejam as menos preconceituosas e mais objetivas possíveis.
-
----
-
-## 📋 **Protocolo PICOC**
-
-Para estruturar sistematicamente a revisão da literatura, utilizaremos o protocolo **PICOC (Population, Intervention, Comparison, Outcomes, Context)**, que fornece um framework robusto para a formulação de questões de pesquisa e busca bibliográfica:
-
-### **🎯 Population (População)**
-- **Imagens e vídeos digitais** gerados por algoritmos de inteligência artificial
-- **Mídias sintéticas** (deepfakes) criadas por GANs, modelos de difusão e outras técnicas generativas
-- **Datasets de referência**: FaceForensics++, Celeb-DF, DFDC, etc.
-
-### **🔬 Intervention (Intervenção)**
-- **Análise de complexidade-entropia** baseada em entropia de permutação
-- **Plano Causalidade Entropia-Complexidade (Plano CH)**
-- **Extração de features estatísticas** usando padrões ordinais bidimensionais
-- **Fusão com features de Vision Transformers** para detecção híbrida
-
-### **⚖️ Comparison (Comparação)**
-- **Métodos tradicionais** baseados em CNNs (ResNet, EfficientNet)
-- **Abordagens de análise de artefatos** (ELA, análise espectral)
-- **Detectores baseados em ViTs** puros
-- **Métodos ensemble** convencionais
-
-### **📊 Outcomes (Resultados)**
-- **Acurácia de detecção** (AUC-ROC, EER)
-- **Capacidade de generalização** cross-dataset
-- **Robustez** a perturbações (compressão, ruído)
-- **Interpretabilidade** dos mecanismos de detecção
-- **Eficiência computacional**
-
-### **🌍 Context (Contexto)**
-- **Detecção de deepfakes** em ambiente controlado e real
-- **Aplicações de segurança da informação**
-- **Cenários de forense digital**
-- **Mitigação de desinformação**
-
----
-
-## ❓ **Questões de Pesquisa (QA)**
-
-### **🔍 Questão Principal (QP)**
-**"Como a análise de complexidade-entropia pode aprimorar a detecção de mídias sintéticas em vídeos, superando as limitações de generalização dos métodos atuais baseados em deep learning?"**
-
-### **📋 Questões Secundárias (QS)**
-
-**QS1:** Quais são as assinaturas estatísticas distintivas de vídeos sintéticos no espaço complexidade-entropia comparadas às de vídeos autênticos?
-
-**QS2:** Como a fusão de features de complexidade-entropia com representações de Vision Transformers impacta na capacidade de generalização cross-dataset?
-
-**QS3:** Qual é a robustez das features baseadas em entropia de permutação contra degradações comuns (compressão, ruído) em vídeos?
-
-**QS4:** Como os parâmetros de embedding (dx, dy) influenciam na separabilidade entre classes no Plano CH?
-
-**QS5:** Qual é o trade-off entre interpretabilidade e performance dos detectores híbridos propostos comparados aos métodos estado-da-arte?
-
-**QS6:** Como as características temporais dos vídeos deepfake se manifestam através da análise de séries temporais de complexidade-entropia?
 
 ---
 
@@ -232,45 +175,163 @@ Localizados em `/docs/artigos/`:
 
 ## 🔍 **Protocolo PICOC: Implementação e Resultados**
 
-### **📋 Preparação da Revisão Sistemática**
-Localizada em `/docs/picoc/preparacao/`:
+Para estruturar sistematicamente a revisão da literatura, utilizaremos o protocolo **PICOC (Population, Intervention, Comparison, Outcomes, Context)**, que fornece um framework robusto para a formulação de questões de pesquisa e busca bibliográfica:
 
-#### **🎯 Bases de Dados Utilizadas**
+### **🎯 Population/Problem (Problema)**
+- **Imagens e vídeos digitais** gerados por algoritmos de inteligência artificial
+- **Mídias sintéticas** criadas ou alteradas por GANs, modelos de difusão e outras técnicas generativas
+- **Datasets de referência**: FaceForensics++, Celeb-DF, DFDC, etc.
+
+### **🔬 Intervention (Intervenção)**
+- **Análise de complexidade-entropia** baseada em entropia de permutação
+- **Plano Causalidade Entropia-Complexidade (Plano CH)**
+- **Extração de features estatísticas** usando padrões ordinais bidimensionais
+- **Fusão com features de Vision Transformers** para detecção híbrida
+
+### **⚖️ Comparison (Comparação)**
+- **Métodos tradicionais** baseados em CNNs (ResNet, EfficientNet)
+- **Abordagens de análise de artefatos** (ELA, análise espectral)
+- **Detectores baseados em ViTs** puros
+- **Métodos ensemble** convencionais
+
+### **📊 Outcomes (Resultados)**
+- **Acurácia de detecção** (AUC-ROC, EER)
+- **Capacidade de generalização** cross-dataset
+- **Robustez** a perturbações (compressão, ruído)
+- **Interpretabilidade** dos mecanismos de detecção
+- **Eficiência computacional**
+
+### **🌍 Context (Contexto)**
+- **Detecção de deepfakes** em ambiente controlado e real
+- **Aplicações de segurança da informação**
+- **Cenários de forense digital**
+- **Mitigação de desinformação**
+
+---
+#### **🎯 Bases de Dados Utilizada (até agora)**
 - **Web of Science:** Coleção Principal (1945-presente) - 9.000+ periódicos indexados
 - **IEEE Xplore:** Biblioteca Digital completa (1988-presente) - 6M+ documentos
 - **Scopus (Elsevier):** Base multidisciplinar abrangente
 - **ScienceDirect:** 3.800+ periódicos e 37.000+ títulos de livros
 
-#### **📝 Artigos Selecionados (25 Principais)**
-Conforme lista em `/docs/picoc/preparacao/artigos selecionados`:
+---
 
-**Surveys e Reviews Fundamentais:**
-- Khan A.A. (2025): "A survey on multimedia-enabled deepfake detection" - *Discover Computing*
-- Kadha V. (2025): "Unravelling Digital Forgeries: A Systematic Survey" - *ACM Computing Surveys*
 
-**Métodos de Análise Temporal:**
-- Zhang Y. (2025): "Exploring coordinated motion patterns of facial landmarks" - *Applied Soft Computing*
-- Zhu C. (2024): "Deepfake detection via inter-frame inconsistency recomposition" - *Pattern Recognition*
 
-**Abordagens de Análise de Frequência:**
-- Qiusong L. (2025): "Joint spatial-frequency deepfake detection network" - *Applied Intelligence*
-- Shi Z. (2025): "Customized Transformer Adapter With Frequency Masking" - *IEEE TIFS*
 
-**Métodos Baseados em Teoria da Informação:**
-- Sheng Z. (2025): "SUMI-IFL: An Information-Theoretic Framework" - *AAAI 2025*
-- Sudarsan M. (2025): "LEAD-AI: Lightweight Entropy Analysis" - *SPIE*
 
-### **✅ Artigos Aprovados para Revisão**
-Localizados em `/docs/picoc/aprovados/1-11/`:
-- **11 artigos** selecionados após aplicação dos critérios de QA
-- Cada pasta contém: PDF completo, arquivo .bib, e metadados HTML
-- Critérios de aprovação baseados nas 7 questões de avaliação (Q1-Q7)
+
+
+#### **📄 Artigos Selecionados (Primeira Avaliação)**
+
+**Surveys e Reviews Fundamentais**
+
+* Ahmed S.R. (2022): "Analysis Survey on Deepfake detection and Recognition with Convolutional Neural Networks" — *Hora 2022 (4th Int. Congress on Human Computer Interaction Optimization and Robotic Applications Proceedings)*
+* Chennamma H.R. (2023): "A comprehensive survey on image authentication for tamper detection with localization" — *Multimedia Tools and Applications*
+* Kadha V. (2025): "Unravelling Digital Forgeries: A Systematic Survey on Image Manipulation Detection and Localization" — *ACM Computing Surveys*
+* Khan A.A. (2025): "A survey on multimedia-enabled deepfake detection: state-of-the-art tools and techniques, emerging trends, current challenges & limitations, and future directions" — *Discover Computing*
+* Li C. (2025): "Survey on Technologies of Video Deepfake Detection" — *Lecture Notes on Data Engineering and Communications Technologies*
+* Liang R. (2020): "A Survey of Audiovisual Deepfake Detection Techniques" — *Journal of Cyber Security*
+* Nguyen T.T. (2022): "Deep learning for deepfakes creation and detection: A survey" — *Computer Vision and Image Understanding*
+* Rana M.S. (2022): "Deepfake Detection: A Systematic Literature Review" — *IEEE Access*
+
+**Métodos de Análise Temporal / Landmark & Motion**
+
+* Liao X. (2023): "FAMM: Facial Muscle Motions for Detecting Compressed Deepfake Videos Over Social Networks" — *IEEE Transactions on Circuits and Systems for Video Technology*
+* Sornavalli G. (2024): "DeepFake Detection by Prediction of Mismatch Between Audio and Video Lip Movement" — *ADICS 2024 (International Conference on Advances in Data Engineering and Intelligent Computing Systems)*
+* Sharma H. (2021): "Video interframe forgery detection: Classification, technique & new dataset" — *Journal of Computer Security*
+* Zhang Y. (2025): "Exploring coordinated motion patterns of facial landmarks for deepfake video detection" — *Applied Soft Computing*
+* Zhu C. (2024): "Deepfake detection via inter-frame inconsistency recomposition and enhancement" — *Pattern Recognition*
+
+**Abordagens de Análise de Frequência / Espacial–Frequencial**
+
+* Frank J.; Eisenhofer T.; Schönherr L. (2020): "Leveraging Frequency Analysis for Deep Fake Image Recognition" — *ICML / PMLR* (referência clássica útil)
+* Qiusong L. (2025): "Joint spatial-frequency deepfake detection network based on dual-domain attention-enhanced deformable convolution" — *Applied Intelligence*
+* Shi Z. (2025): "Customized Transformer Adapter With Frequency Masking for Deepfake Detection" — *IEEE Transactions on Information Forensics and Security*
+
+**Métodos Baseados em Teoria da Informação & Entropia**
+
+* Sheng Z. (2025): "SUMI-IFL: An Information-Theoretic Framework for Image Forgery Localization with Sufficiency and Minimality Constraints" — *Proceedings of the AAAI Conference on Artificial Intelligence*
+* Sudarsan M. (2025): "LEAD-AI: Lightweight Entropy Analysis for Distinguishing AI-Generated Images from Genuine Photographs" — *Proceedings of SPIE (The International Society for Optical Engineering)*
+* Sun K. (2022): "An Information Theoretic Approach for Attention-Driven Face Forgery Detection" — *Lecture Notes in Computer Science*
+
+**Arquiteturas Transformer / Vision Transformers / Adapters**
+
+* Atamna M. (2025): "WaveConViT: Wavelet-Based Convolutional Vision Transformer for Cross-Manipulation Deepfake Video Detection" — *Lecture Notes in Computer Science*
+* D. Zhang (2025): "DPL: Cross-Quality DeepFake Detection via Dual Progressive Learning" — *Lecture Notes in Computer Science*
+* Li S. (2024): "UnionFormer: Unified-Learning Transformer with Multi-View Representation for Image Manipulation Detection and Localization" — *Proceedings of CVPR (IEEE Computer Society Conference on Computer Vision and Pattern Recognition)*
+
+**Robustez, Generalização e Continual Learning**
+
+* Bai N. (2025): "Towards generalizable face forgery detection via mitigating spurious correlation" — *Neural Networks*
+* Sun K. (2025): "Continual Face Forgery Detection via Historical Distribution Preserving" — *International Journal of Computer Vision*
+* Xu K. (2024): "RLGC: Reconstruction Learning Fusing Gradient and Content Features for Efficient Deepfake Detection" — *IEEE Transactions on Consumer Electronics*
+
+**Localização de Forgeries / Detecção Forense e Otimização**
+
+* Chen J. (2023): "Identification of image global processing operator chain based on feature decoupling" — *Information Sciences*
+* Iseed S.Y. (2023): "Forensic approach for distinguishing between source and destination regions in copy-move forgery" — *Multimedia Tools and Applications*
+* Joshi D. (2025): "Optimized detection and localization of copy-rotate-move forgeries using biogeography-based optimization algorithm" — *Journal of Forensic Sciences*
+* Peng C. (2025): "Within 3DMM Space: Exploring Inherent 3D Artifact for Video Forgery Detection" — *IEEE Transactions on Information Forensics and Security*
+
+**Modelos Leves, Codec Seguro & Consumer Electronics**
+
+* Huang C.H. (2025): "A Secure Learned Image Codec for Authenticity Verification via Self-Destructive Compression" — *Big Data and Cognitive Computing*
+* Jin Z. (2025): "Protecting Consumer Electronics Human-Computer Interactive Verification Security via Anomaly-Aware Reconstruction-Guided Forgery Localization" — *IEEE Transactions on Consumer Electronics*
+* Sudarsan M. (2025): "LEAD-AI: Lightweight Entropy Analysis for Distinguishing AI-Generated Images from Genuine Photographs" — *Proceedings of SPIE*
+
+**Multimodalidade (Áudio–Vídeo / Multimodal)**
+
+* Das A.K. (2023): "A Multi-stage Multi-modal Classification Model for DeepFakes Combining Deep Learned and Computer Vision Oriented Features" — *Lecture Notes in Computer Science*
+* Liu B. (2022): "Detecting Generated Images by Real Images" — *Lecture Notes in Computer Science*
+* Sornavalli G. (2024): "DeepFake Detection by Prediction of Mismatch Between Audio and Video Lip Movement" — *ADICS 2024*
+
+**Detecção baseada em Difusão / Latent Diffusion & Flags**
+
+* Ricker J. (2024): "AEROBLADE: Training-Free Detection of Latent Diffusion Images Using Autoencoder Reconstruction Error" — *Proc. IEEE/CVPR (Conference on Computer Vision and Pattern Recognition)*
+* Sun K. (2024): "DiffusionFake: Enhancing Generalization in Deepfake Detection via Guided Stable Diffusion" — *Advances in Neural Information Processing Systems (NeurIPS / NeurIPS Proceedings)*
+
+**Trabalhos Empíricos, Heurísticos e Otimizações Algorítmicas**
+
+* Meena K.B. (2021): "A deep learning based method for image splicing detection" — *Journal of Physics: Conference Series*
+* Tripathi E. (2024): "An efficient digital image forgery detection using Pelican search optimisation-based DCNN" — *Journal of Experimental and Theoretical Artificial Intelligence*
+* Tripathi E.; (outros trabalhos forenses/heurísticos relacionados) — (veja seção Forense & Otimização)
+
+**Estudos Forenses & Processamento de Imagem (2023–2021)**
+
+* Kadha V. (2023): "Forensic analysis of manipulation chains: A deep residual network for detecting JPEG-manipulation-JPEG" — *Forensic Science International: Digital Investigation*
+* Chen J. (2023): "Identification of image global processing operator chain based on feature decoupling" — *Information Sciences*
+* Hassan A. (2021): "Texture based Image Splicing Forgery Recognition using a Passive Approach" — *International Journal of Integrated Engineering*
+
+**Conferências, Coleções e Misc**
+
+* ICSPIS (2022): *2022 5th International Conference on Signal Processing and Information Security (ICSPIS 2022)* — (coleção de trabalhos relevantes)
+* Blondé P. (2021): "In Medio Stat Virtus: intermediate levels of mind wandering improve episodic memory encoding in a virtual environment" — *Psychological Research*
+* Wang Z. (2019): "Image forgery detection algorithm based on U-shaped detection network" — *Tongxin Xuebao Journal on Communications*
 
 ---
 
-## ❓ **Questões de Avaliação (QA) - Refinadas**
 
-### **📊 Critérios de Qualidade dos Estudos**
+## ❓ **Questões de Pesquisa (QA)**
+
+### **🔍 Questão Principal (QP)**
+**"Como a análise de complexidade-entropia pode aprimorar a detecção de mídias sintéticas em vídeos, superando as limitações de generalização dos métodos atuais baseados em deep learning?"**
+
+### **📋 Questões Secundárias (QS)**
+
+**QS1:** Quais são as assinaturas estatísticas distintivas de vídeos sintéticos no espaço complexidade-entropia comparadas às de vídeos autênticos?
+
+**QS2:** Como a fusão de features de complexidade-entropia com representações de Vision Transformers impacta na capacidade de generalização cross-dataset?
+
+**QS3:** Qual é a robustez das features baseadas em entropia de permutação contra degradações comuns (compressão, ruído) em vídeos?
+
+**QS4:** Como os parâmetros de embedding (dx, dy) influenciam na separabilidade entre classes no Plano CH?
+
+**QS5:** Qual é o trade-off entre interpretabilidade e performance dos detectores híbridos propostos comparados aos métodos estado-da-arte?
+
+**QS6:** Como as características temporais dos vídeos deepfake se manifestam através da análise de séries temporais de complexidade-entropia?
+
+### **📊 Critérios de Avaliação da Literatura (Quality Assessment)**
 Baseados em análise em `/docs/picoc/preparacao/perguntas_avaliacao`:
 
 #### **🔬 Rigor Metodológico**
@@ -300,34 +361,26 @@ Baseados em análise em `/docs/picoc/preparacao/perguntas_avaliacao`:
 **Q7:** Os objetivos da pesquisa, as contribuições e as questões de pesquisa do estudo estão claramente definidos?
 - **Análise:** Garante que o artigo tem **foco claro** e contribuição bem definida, evitando trabalhos com escopo vago ou objetivos pouco claros.
 
-### **🎯 Avaliação Holística**
+#### **🎯 Avaliação Holística**
 Estas 7 questões criam uma avaliação completa que analisa:
 - **"O quê"** (resultados e métricas)
 - **"Como"** (metodologia e relato)
 - **"Por quê"** (relevância e limitações)
 
-### **📚 Artigos em Análise Detalhada (QA)**
-Localizados em `/docs/picoc/qa/`:
+---
 
-#### **Surveys e Estado-da-Arte:**
-- "A survey on multimedia-enabled deepfake detection state-of-the-art tools and techniques..."
-- "Unravelling Digital Forgeries A Systematic Survey on Image Manipulation Detection..."
 
-#### **Métodos Baseados em Transformers:**
-- "Customized Transformer Adapter With Frequency Masking for Deepfake Detection"
-- "WaveConViT: Wavelet-Based Convolutional Vision Transformer..."
+## 🔧 **Ambiente de Desenvolvimento**
 
-#### **Abordagens de Análise Temporal e Espacial:**
-- "Exploring coordinated motion patterns of facial landmarks for deepfake video detection"
-- "Joint spatial-frequency deepfake detection network based on dual-domain attention..."
+### **🐍 Python com Anaconda**
+O projeto utiliza **Python** como linguagem principal, gerenciado através do **Anaconda** para garantir reprodutibilidade e isolamento de dependências.
 
-#### **Métodos Baseados em Teoria da Informação:**
-- "LEAD-AI lightweight entropy analysis for distinguishing AI-generated images..."
-- "SUMI-IFL An Information-Theoretic Framework for Image Forgery Localization..."
+#### **Instalação do Ambiente:**
+```bash
+```
 
-#### **Análise de Robustez:**
-- "DPL Cross-quality DeepFake Detection via Dual Progressive Learning"
-- "Detecting face tampering in videos using deepfake forensics"
+### **📊 Pacote ordpy**
+```
 
 ---
 
@@ -349,7 +402,12 @@ pip install transformers ordpy
 ```
 
 ### **📊 Pacote ordpy**
+```
+
+### **📊 Pacote ordpy**
 O projeto utiliza intensivamente o pacote **ordpy** para análise de entropia de permutação e complexidade estatística.
+
+#### **Sobre o ordpy:**
 
 #### **Sobre o ordpy:**
 - **Repositório:** [arthurpessa/ordpy](https://github.com/arthurpessa/ordpy)
