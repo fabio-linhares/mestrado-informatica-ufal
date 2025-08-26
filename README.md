@@ -142,11 +142,10 @@ A seguir estão os datasets utilizados neste trabalho. Para cada um fornecemos u
 
 ---
 
-#### **🎯 Bases de Dados Utilizada (até agora)**
+#### **🎯 Bases de Dados Utilizadas (até agora)**
 
 ##### Web of Science - Coleção Principal (Clarivate Analytics / Thomson Reuters)
 - Provedor: Clarivate Analytics
-- Linguagem: Não Identificado
 - Resumo: Base multidisciplinar que indexa somente os periódicos mais citados em suas respectivas áreas. É também um índice de citações, informando, para cada artigo, os documentos por ele citados e os documentos que o citaram. Possui hoje mais de 9.000 periódicos indexados. É composta por:
   - Science Citation Index Expanded (SCI-EXPANDED): 1945 até o presente
   - Social Sciences Citation Index: 1956 até o presente
@@ -157,21 +156,18 @@ A seguir estão os datasets utilizados neste trabalho. Para cada um fornecemos u
 
 ##### IEEE Xplore Digital Library
 - Provedor: Institute of Electrical and Electronic Engineers Incorporated (IEEE)
-- Linguagem: Não Identificado
 - Resumo: O Institute of Electrical and Electronic Engineers Incorporated (IEEE) é uma organização dedicada ao avanço da inovação e da excelência tecnológica para o benefício da humanidade que foi projetada para atender profissionais envolvidos em todos os aspectos dos campos elétrico, eletrônico, e de computação e demais áreas afins da ciência e tecnologia que fundamentam a civilização moderna. Criado em 1884, nos E.U.A., o IEEE congrega mais de 410.000 associados, entre engenheiros, cientistas, pesquisadores e outros profissionais, em cerca de 160 países. É composto por um Conselho de Diretores e por um Comitê Executivo que compreende 10 Regiões, 39 Sociedades Técnicas, 7 Conselhos Técnicos e aproximadamente 1850 Comitês Societários e 342 Seções. A coleção IEEE Xplore Digital Library inclui texto completo desde 1988. Oferece publicações de periódicos, normas técnicas e revistas em engenharia elétrica, computação, biotecnologia, telecomunicações, energia e dezenas de outras tecnologias. Além disso, o IEEE fornece acesso a mais de 6 milhões de documentos, incluindo artigos de pesquisa, normas técnicas, anais de congressos, tabelas e gráficos, conjunto de dados, artigos de transações internacionais, e-books, publicações de conferências, patentes e periódicos. Possui ainda a coleção IEEE Access, que é um periódico multidisciplinar, somente online, de acesso totalmente aberto (acesso gold), apresentando continuamente os resultados de pesquisa original ou desenvolvimento em todos os campos de interesse do IEEE. Apoiado por Taxa de Processamento de Artigo – APC, seus artigos são revisados por pares, a submissão para publicação é de 4 a 6 semanas e os artigos ficam disponíveis gratuitamente para todos os leitores. Possui fator de impacto próprio, pontos de influência do artigo e CiteScore estimados. Além de normas e proceedings, atualmente o Portal de Periódicos assina 239 períodicos para leitura e financia a publicação em 217 títulos disponibilizados pela IEEE, de modo que 163 instituições têm sido beneficiadas. O conteúdo atende as seguintes grandes áreas da tabela CAPES: Ciências Exatas e da Terra e Engenharias.
 
 ---
 
 ##### SCOPUS (Elsevier)
 - Provedor: Reed Elsevier
-- Linguagem: Não Identificado
 - Resumo: Scopus is a comprehensive scientific, medical, technical and social science database containing all relevant literature.
 
 ---
 
 ##### ScienceDirect (Elsevier)
 - Provedor: Elsevier
-- Linguagem: Não Identificado
 - Resumo: A ScienceDirect contém artigos de mais de 3.800 diários e mais de 37.000 títulos de livros, muitas de suas publicações são aprimoradas com elementos interativos fornecidos por autores, como áudio, vídeo, gráficos, tabelas e imagens. Os artigos também possuem links incorporados para conjuntos de dados externos, como Scopus®, PANGEA® e Reaxys®. Combinando esses extras de conteúdo com o texto de cada artigo e se obterá uma compreensão completa do panorama da informação antes de avançar seu trabalho. Estão disponíveis publicações cobrindo as áreas de Ciências Biológicas, Ciências da Saúde, Ciências Agrárias, Ciências Exatas e da Terra, Engenharias, Ciências Sociais Aplicadas, Ciências Humanas e Letras e Artes.
 
 ---
