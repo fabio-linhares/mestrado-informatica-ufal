@@ -199,42 +199,50 @@ Este documento apresenta os resultados da avaliação sistemática dos artigos s
 
 ---
 
+### 11. **Continual Face Forgery Detection via Historical Distribution Preserving**
+📄 **Arquivo PDF:** [Continual Face Forgery Detection via Historical Distribution Preserving.pdf](../aprovados/7/Continual%20Face%20Forgery%20Detection%20via%20Historical%20Distribution%20Preserving.pdf)
+
+- 📊 Avaliação detalhada: [arquivo QA](./Continual%20Face%20Forgery%20Detection%20via%20Historical%20Distribution%20Preserving)
+- ✅ Status: incluído no conjunto analisado; pontuação exibida no arquivo QA (se disponível).
+
+---
+
 ## 📊 **Resumo Estatístico**
 
 ### **📈 Distribuição de Pontuações**
-- **6.5 pontos:** 3 artigos (30%)
-- **6.0 pontos:** 2 artigos (20%) 
-- **5.0 pontos:** 1 artigo (10%)
-- **4.5 pontos:** 4 artigos (40%)
+- **6.5 pontos:** 3 artigos (27.3%)
+- **6.0 pontos:** 2 artigos (18.2%) 
+- **5.0 pontos:** 1 artigo (9.1%)
+- **4.5 pontos:** 4 artigos (36.4%)
 
 ### **🎯 Taxa de Aprovação**
-- **Total de artigos avaliados:** 10
-- **Artigos incluídos:** 10 (100%)
+- **Total de artigos avaliados:** 11
+- **Artigos incluídos:** 11 (100%)
 - **Artigos excluídos:** 0 (0%)
 
 ### **📊 Performance por Critério**
 | Critério | Sim | Parcialmente | Não | Média |
 |----------|-----|--------------|-----|-------|
-| **Q1** | 10 (100%) | 0 (0%) | 0 (0%) | 1.00 |
-| **Q2** | 7 (70%) | 1 (10%) | 2 (20%) | 0.75 |
-| **Q3** | 9 (90%) | 0 (0%) | 1 (10%) | 0.90 |
-| **Q4** | 5 (50%) | 1 (10%) | 4 (40%) | 0.55 |
-| **Q5** | 8 (80%) | 2 (20%) | 0 (0%) | 0.90 |
-| **Q6** | 3 (30%) | 2 (20%) | 5 (50%) | 0.40 |
-| **Q7** | 10 (100%) | 0 (0%) | 0 (0%) | 1.00 |
+| **Q1** | 11 (100%) | 0 (0%) | 0 (0%) | 1.00 |
+| **Q2** | 8 (72.7%) | 1 (9.1%) | 2 (18.2%) | 0.73 |
+| **Q3** | 10 (90.9%) | 0 (0%) | 1 (9.1%) | 0.91 |
+| **Q4** | 6 (54.5%) | 1 (9.1%) | 4 (36.4%) | 0.55 |
+| **Q5** | 9 (81.8%) | 2 (18.2%) | 0 (0%) | 0.82 |
+| **Q6** | 4 (36.4%) | 2 (18.2%) | 5 (45.5%) | 0.36 |
+| **Q7** | 11 (100%) | 0 (0%) | 0 (0%) | 1.00 |
 
 ### **🔍 Principais Insights**
 - **Forças:** Todos os artigos têm métricas claras (Q1) e objetivos bem definidos (Q7)
 - **Área de Melhoria:** Discussão de limitações (Q6) é o critério com menor pontuação
 - **Robustez:** Apenas 55% dos estudos avaliam robustez adequadamente (Q4)
-- **Padrões:** 70% usam datasets públicos, demonstrando aderência a boas práticas
+- **Padrões:** 72.7% usam datasets públicos, demonstrando aderência a boas práticas
 
 ---
 
 ## 📝 **Observações Metodológicas**
 
 1. **Critério Mais Atendido:** Q1 e Q7 (100% de conformidade)
-2. **Critério Menos Atendido:** Q6 - Discussão de limitações (40% de conformidade)
+2. **Critério Menos Atendido:** Q6 - Discussão de limitações (36.4% de conformidade)
 3. **Tendência:** Artigos mais recentes tendem a ter melhor documentação de limitações
 4. **Impacto na Seleção:** Todos os artigos superaram o threshold de 4.0 pontos
 

@@ -26,6 +26,9 @@ Este índice facilita a navegação entre os artigos aprovados e suas respectiva
 9. [Markov Observation Models and Deepfakes](../aprovados/4/mathematics-13-02128-v2.pdf) | [📊 Avaliação](./Markov%20Observation%20Models%20and%20Deepfakes)
 10. [A survey on multimedia-enabled deepfake detection](../qa/A%20survey%20on%20multimedia-enabled%20deepfake%20detection%20state-of-the-art%20tools%20and%20techniques,%20emerging%20trends,%20current%20challenges%20&%20limitations,%20and%20future%20directions) | [📊 Avaliação](./A%20survey%20on%20multimedia-enabled%20deepfake%20detection%20state-of-the-art%20tools%20and%20techniques,%20emerging%20trends,%20current%20challenges%20&%20limitations,%20and%20future%20directions)
 
+#### 🆕 Novos (pontuação pendente)
+- [Continual Face Forgery Detection via Historical Distribution Preserving](../aprovados/7/Continual%20Face%20Forgery%20Detection%20via%20Historical%20Distribution%20Preserving.pdf) | [📊 Avaliação](./Continual%20Face%20Forgery%20Detection%20via%20Historical%20Distribution%20Preserving)
+
 ---
 
 ## 📊 **Por Categoria**

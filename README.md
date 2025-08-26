@@ -27,6 +27,10 @@ Repositório para armazenar estudos, projetos e materiais relacionados ao Mestra
 
 ---
 
+[➡️ Relatório executivo da RSL](docs/picoc/qa/RELATORIO_EXECUTIVO.md)
+
+---
+
 ## 📝 **Introdução**  
 
 A proliferação de **mídias sintéticas**, popularmente conhecidas como deepfakes, representa um desafio crescente para a segurança da informação e a confiança no ecossistema digital. A rápida evolução dos modelos generativos, como **Redes Adversariais Generativas (GANs)** e **Modelos de Difusão**, torna os métodos de detecção baseados em artefatos específicos rapidamente obsoletos. A comunidade de pesquisa enfrenta a necessidade premente de desenvolver detectores que não apenas apresentem alta acurácia, mas que também generalizem para métodos de manipulação desconhecidos e não vistos durante o treinamento.
@@ -398,6 +402,7 @@ Estas 7 questões criam uma avaliação completa que analisa:
 | 8 | **Exploring coordinated motion patterns** | 4.5/8.0 | [📄 PDF](docs/picoc/aprovados/6/Exploring%20coordinated%20motion%20patterns%20of%20facial%20landmarks%20for%20deepfake%20video%20detection%20-%20ScienceDirect.pdf) | [📊 QA](docs/picoc/qa/Exploring%20coordinated%20motion%20patterns%20of%20facial%20landmarks%20for%20deepfake%20video%20detection) |
 | 9 | **Markov Observation Models and Deepfakes** | 4.5/8.0 | [📄 PDF](docs/picoc/aprovados/4/mathematics-13-02128-v2.pdf) | [📊 QA](docs/picoc/qa/Markov%20Observation%20Models%20and%20Deepfakes) |
 | 10 | **A survey on multimedia-enabled deepfake detection** | 4.5/8.0 | 📚 Survey | [📊 QA](docs/picoc/qa/A%20survey%20on%20multimedia-enabled%20deepfake%20detection%20state-of-the-art%20tools%20and%20techniques,%20emerging%20trends,%20current%20challenges%20&%20limitations,%20and%20future%20directions) |
+| 11 | **Continual Face Forgery Detection via Historical Distribution Preserving** | 5.0/8.0 | [📄 PDF](docs/picoc/aprovados/7/Continual%20Face%20Forgery%20Detection%20via%20Historical%20Distribution%20Preserving.pdf) | [📊 QA](docs/picoc/qa/Continual%20Face%20Forgery%20Detection%20via%20Historical%20Distribution%20Preserving) |
 
 #### **📈 Estatísticas Gerais**
 - **Taxa de Aprovação:** 100% (10/10 artigos)

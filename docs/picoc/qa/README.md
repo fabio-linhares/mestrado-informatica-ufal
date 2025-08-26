@@ -16,14 +16,15 @@ Cada artigo possui um arquivo JSON com sua avaliação detalhada:
 
 1. `A survey on multimedia-enabled deepfake detection...` - Survey estado-da-arte
 2. `Customized Transformer Adapter...` - ViT com máscara de frequência  
-3. `DPL Cross-quality DeepFake Detection...` - Aprendizagem progressiva dual
-4. `Detecting face tampering in videos...` - Forense de vídeos deepfake
-5. `Exploring coordinated motion patterns...` - Padrões de movimento facial
-6. `Joint spatial-frequency deepfake detection...` - Análise dual-domain
-7. `LEAD-AI lightweight entropy analysis...` - Análise de entropia
-8. `Markov Observation Models and Deepfakes` - Modelos probabilísticos
-9. `SUMI-IFL Information-Theoretic Framework...` - Framework teórico
-10. `Unravelling Digital Forgeries...` - Survey manipulação de imagens
+3. `Continual Face Forgery Detection via Historical Distribution Preserving` - Aprendizado contínuo e preservação de distribuição
+4. `DPL Cross-quality DeepFake Detection...` - Aprendizagem progressiva dual
+5. `Detecting face tampering in videos...` - Forense de vídeos deepfake
+6. `Exploring coordinated motion patterns...` - Padrões de movimento facial
+7. `Joint spatial-frequency deepfake detection...` - Análise dual-domain
+8. `LEAD-AI lightweight entropy analysis...` - Análise de entropia
+9. `Markov Observation Models and Deepfakes` - Modelos probabilísticos
+10. `SUMI-IFL Information-Theoretic Framework...` - Framework teórico
+11. `Unravelling Digital Forgeries...` - Survey manipulação de imagens
 
 ---
 
