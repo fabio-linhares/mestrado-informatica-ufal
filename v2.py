@@ -39,7 +39,6 @@ from PIL import Image
 import ordpy
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import (classification_report, confusion_matrix,
                              roc_auc_score, roc_curve)
 from sklearn.preprocessing import StandardScaler
@@ -71,8 +70,7 @@ class EdgeFocusedDeepfakeAnalyzer:
         self.multi_scale = multi_scale
         self.embedding_dims = [3, 4, 5, 6] if multi_scale else [embedding_dim]
         self.features_df = None
-        self.model_rf = None
-        self.model_knn = None
+        self.model = None
         self.scaler = StandardScaler()
         self.verbose = verbose
         if verbose:
@@ -364,12 +362,12 @@ class EdgeFocusedDeepfakeAnalyzer:
         return pd.DataFrame(features_list)
 
     def train_and_evaluate(self, test_size=0.25, optimize=False):
-        """Treina RandomForest e KNN (com opção de GridSearch) e avalia ambos."""
+        """Treina RandomForest (com opção de GridSearch) e avalia."""
         if self.features_df is None or len(self.features_df) < 40:
             print("Dados insuficientes para treino.")
             return None
 
-        print("🤖 Treinando classificadores (RF e KNN)...")
+        print("🤖 Treinando classificadores...")
         feats = [c for c in self.features_df.columns if c not in ['label', 'filename', 'dataset']]
         X = self.features_df[feats]
         y = self.features_df['label']
@@ -386,14 +384,9 @@ class EdgeFocusedDeepfakeAnalyzer:
         X_train_s = self.scaler.transform(X_train)
         X_test_s  = self.scaler.transform(X_test)
 
-        # ========== RANDOM FOREST ==========
-        print("\n" + "="*60)
-        print("RANDOM FOREST")
-        print("="*60)
-        
         if optimize:
             print("GridSearchCV (RF)...")
-            grid_rf = GridSearchCV(
+            grid = GridSearchCV(
                 RandomForestClassifier(random_state=42),
                 {
                     'n_estimators': [100, 200, 300],
@@ -403,107 +396,58 @@ class EdgeFocusedDeepfakeAnalyzer:
                 },
                 cv=5, scoring='accuracy', n_jobs=-1, verbose=0
             )
-            grid_rf.fit(X_train_s, y_train)
-            self.model_rf = grid_rf.best_estimator_
-            print(f"Best params RF: {grid_rf.best_params_}")
+            grid.fit(X_train_s, y_train)
+            self.model = grid.best_estimator_
+            print(f"Best params: {grid.best_params_}")
         else:
-            self.model_rf = RandomForestClassifier(
+            self.model = RandomForestClassifier(
                 n_estimators=200, max_depth=20, random_state=42, n_jobs=-1
             )
-            self.model_rf.fit(X_train_s, y_train)
+            self.model.fit(X_train_s, y_train)
 
-        # Métricas RF
-        tr_acc_rf = self.model_rf.score(X_train_s, y_train)
-        te_acc_rf = self.model_rf.score(X_test_s,  y_test)
-        print(f"Acurácia RF: Treino={tr_acc_rf:.4f} ({tr_acc_rf*100:.1f}%) | Teste={te_acc_rf:.4f} ({te_acc_rf*100:.1f}%)")
+        # Métricas
+        tr_acc = self.model.score(X_train_s, y_train)
+        te_acc = self.model.score(X_test_s,  y_test)
+        print(f"\nAcurácia: Treino={tr_acc:.4f} ({tr_acc*100:.1f}%) | Teste={te_acc:.4f} ({te_acc*100:.1f}%)")
 
-        cv_scores_rf = cross_val_score(self.model_rf, X_train_s, y_train, cv=5)
-        print(f"CV 5-fold RF: {cv_scores_rf.mean():.4f} ± {cv_scores_rf.std():.4f}")
+        cv_scores = cross_val_score(self.model, X_train_s, y_train, cv=5)
+        print(f"CV 5-fold: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")
 
-        # Importância RF
-        imp_rf = pd.DataFrame({
+        # Importância
+        imp = pd.DataFrame({
             'feature': X_train.columns,
-            'importance': self.model_rf.feature_importances_
+            'importance': self.model.feature_importances_
         }).sort_values('importance', ascending=False)
-        print("\nTop 15 features (RF):")
-        print(imp_rf.head(15).to_string(index=False))
+        print("\nTop 15 features:")
+        print(imp.head(15).to_string(index=False))
 
-        # Confusion matrix RF
-        y_pred_rf = self.model_rf.predict(X_test_s)
-        cm_rf = confusion_matrix(y_test, y_pred_rf, labels=['fake','real'])
-        print("\nMatriz de Confusão RF (linhas=verdadeiro, cols=predito):")
+        # Confusion matrix (ordem lexicográfica: ['fake','real'])
+        y_pred = self.model.predict(X_test_s)
+        cm = confusion_matrix(y_test, y_pred, labels=['fake','real'])
+        print("\nMatriz de Confusão (linhas=verdadeiro, cols=predito):")
         print("                Pred Fake  Pred Real")
-        print(f"True Fake:      {cm_rf[0,0]:9d} {cm_rf[0,1]:10d}")
-        print(f"True Real:      {cm_rf[1,0]:9d} {cm_rf[1,1]:10d}")
+        print(f"True Fake:      {cm[0,0]:9d} {cm[0,1]:10d}")
+        print(f"True Real:      {cm[1,0]:9d} {cm[1,1]:10d}")
 
-        print("\nRelatório de Classificação RF:")
-        print(classification_report(y_test, y_pred_rf, labels=['fake','real'], target_names=['fake','real']))
-
-        # ========== K-NEAREST NEIGHBORS ==========
-        print("\n" + "="*60)
-        print("K-NEAREST NEIGHBORS")
-        print("="*60)
-        
-        if optimize:
-            print("GridSearchCV (KNN)...")
-            grid_knn = GridSearchCV(
-                KNeighborsClassifier(),
-                {
-                    'n_neighbors': [3, 5, 7, 9, 11],
-                    'weights': ['uniform', 'distance'],
-                    'metric': ['euclidean', 'manhattan', 'minkowski']
-                },
-                cv=5, scoring='accuracy', n_jobs=-1, verbose=0
-            )
-            grid_knn.fit(X_train_s, y_train)
-            self.model_knn = grid_knn.best_estimator_
-            print(f"Best params KNN: {grid_knn.best_params_}")
-        else:
-            self.model_knn = KNeighborsClassifier(n_neighbors=5, weights='distance', metric='euclidean')
-            self.model_knn.fit(X_train_s, y_train)
-
-        # Métricas KNN
-        tr_acc_knn = self.model_knn.score(X_train_s, y_train)
-        te_acc_knn = self.model_knn.score(X_test_s,  y_test)
-        print(f"Acurácia KNN: Treino={tr_acc_knn:.4f} ({tr_acc_knn*100:.1f}%) | Teste={te_acc_knn:.4f} ({te_acc_knn*100:.1f}%)")
-
-        cv_scores_knn = cross_val_score(self.model_knn, X_train_s, y_train, cv=5)
-        print(f"CV 5-fold KNN: {cv_scores_knn.mean():.4f} ± {cv_scores_knn.std():.4f}")
-
-        # Confusion matrix KNN
-        y_pred_knn = self.model_knn.predict(X_test_s)
-        cm_knn = confusion_matrix(y_test, y_pred_knn, labels=['fake','real'])
-        print("\nMatriz de Confusão KNN (linhas=verdadeiro, cols=predito):")
-        print("                Pred Fake  Pred Real")
-        print(f"True Fake:      {cm_knn[0,0]:9d} {cm_knn[0,1]:10d}")
-        print(f"True Real:      {cm_knn[1,0]:9d} {cm_knn[1,1]:10d}")
-
-        print("\nRelatório de Classificação KNN:")
-        print(classification_report(y_test, y_pred_knn, labels=['fake','real'], target_names=['fake','real']))
-
-        # ========== COMPARAÇÃO ==========
-        print("\n" + "="*60)
-        print("COMPARAÇÃO DE MODELOS")
-        print("="*60)
-        print(f"{'Modelo':<20} {'Acurácia Treino':<20} {'Acurácia Teste':<20} {'CV Mean ± Std'}")
-        print("-"*80)
-        print(f"{'Random Forest':<20} {tr_acc_rf:.4f} ({tr_acc_rf*100:.1f}%){'':<6} {te_acc_rf:.4f} ({te_acc_rf*100:.1f}%){'':<6} {cv_scores_rf.mean():.4f} ± {cv_scores_rf.std():.4f}")
-        print(f"{'KNN':<20} {tr_acc_knn:.4f} ({tr_acc_knn*100:.1f}%){'':<6} {te_acc_knn:.4f} ({te_acc_knn*100:.1f}%){'':<6} {cv_scores_knn.mean():.4f} ± {cv_scores_knn.std():.4f}")
+        print("\nRelatório de Classificação:")
+        print(classification_report(y_test, y_pred, labels=['fake','real'], target_names=['fake','real']))
 
         return {
             'X_train': X_train, 'X_test': X_test,
             'y_train': y_train, 'y_test': y_test,
-            'y_pred_rf': y_pred_rf,
-            'y_pred_knn': y_pred_knn,
-            'feature_importance': imp_rf,
+            'y_pred': y_pred,
+            'feature_importance': imp,
             'X_train_scaled': X_train_s,
-            'X_test_scaled': X_test_s,
-            'cm_rf': cm_rf,
-            'cm_knn': cm_knn
+            'X_test_scaled': X_test_s
         }
 
     def create_visualizations(self, save_dir, eval_results=None):
-        """Gera visualizações: planos CH multi-escala e curvas ROC comparativas (RF vs KNN)."""
+        """Gera visualizações: planos CH multi-escala e curva ROC (se disponível).
+
+        Saídas:
+            - plano_ch_multiescala.png
+            - roc_curve.png (quando modelo e probabilidades estiverem disponíveis)
+        """
         if self.features_df is None or len(self.features_df) == 0:
             print("Sem dados para visualizar.")
             return
@@ -535,86 +479,47 @@ class EdgeFocusedDeepfakeAnalyzer:
             plt.savefig(save_dir / 'plano_ch_multiescala.png', dpi=300, bbox_inches='tight')
             plt.close()
 
-        # ROC comparativa (RF vs KNN)
-        if eval_results is not None and self.model_rf and self.model_knn:
+        # ROC (se houver modelo/resultados)
+        if eval_results is not None and hasattr(self.model, "predict_proba"):
             y_test = eval_results['y_test']
             X_test_s = eval_results['X_test_scaled']
-            
-            # RF
-            proba_rf = self.model_rf.predict_proba(X_test_s)
-            idx_real_rf = list(self.model_rf.classes_).index('real')
-            y_score_rf = proba_rf[:, idx_real_rf]
-            
-            # KNN
-            proba_knn = self.model_knn.predict_proba(X_test_s)
-            idx_real_knn = list(self.model_knn.classes_).index('real')
-            y_score_knn = proba_knn[:, idx_real_knn]
-            
+            proba = self.model.predict_proba(X_test_s)
+            # Pegar a coluna da classe 'real'
+            idx_real = list(self.model.classes_).index('real')
+            y_score = proba[:, idx_real]
             y_true = (y_test == 'real').astype(int)
-            
-            fpr_rf, tpr_rf, _ = roc_curve(y_true, y_score_rf)
-            auc_rf = roc_auc_score(y_true, y_score_rf)
-            
-            fpr_knn, tpr_knn, _ = roc_curve(y_true, y_score_knn)
-            auc_knn = roc_auc_score(y_true, y_score_knn)
+            fpr, tpr, _ = roc_curve(y_true, y_score)
+            auc = roc_auc_score(y_true, y_score)
 
-            plt.figure(figsize=(10, 8))
-            plt.plot(fpr_rf, tpr_rf, color='darkorange', lw=2, label=f'RF (AUC={auc_rf:.3f})')
-            plt.plot(fpr_knn, tpr_knn, color='green', lw=2, label=f'KNN (AUC={auc_knn:.3f})')
+            plt.figure(figsize=(8, 6))
+            plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC (AUC={auc:.3f})')
             plt.plot([0,1], [0,1], color='navy', lw=2, linestyle='--', label='Chance')
             plt.xlim([0,1]); plt.ylim([0,1.05])
-            plt.xlabel('FPR (Taxa de Falsos Positivos)', fontsize=12)
-            plt.ylabel('TPR (Taxa de Verdadeiros Positivos)', fontsize=12)
-            plt.title('Curvas ROC Comparativas - Deepfake Detection', fontsize=14, fontweight='bold')
-            plt.grid(True, alpha=0.3); plt.legend(loc='lower right', fontsize=11)
-            plt.savefig(save_dir / 'roc_curve_comparison.png', dpi=300, bbox_inches='tight')
+            plt.xlabel('FPR'); plt.ylabel('TPR')
+            plt.title('Curva ROC - Deepfake (RF)')
+            plt.grid(True, alpha=0.3); plt.legend(loc='lower right')
+            plt.savefig(save_dir / 'roc_curve.png', dpi=300, bbox_inches='tight')
             plt.close()
-            
-            print(f"\nAUC-ROC RF:  {auc_rf:.4f}")
-            print(f"AUC-ROC KNN: {auc_knn:.4f}")
-            
-            # Gráfico de barras comparativo
-            fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-            
-            # Matrizes de confusão
-            cm_rf = eval_results['cm_rf']
-            cm_knn = eval_results['cm_knn']
-            
-            sns.heatmap(cm_rf, annot=True, fmt='d', cmap='Blues', ax=axes[0],
-                       xticklabels=['Fake', 'Real'], yticklabels=['Fake', 'Real'])
-            axes[0].set_title('Matriz de Confusão - Random Forest', fontweight='bold')
-            axes[0].set_ylabel('Verdadeiro')
-            axes[0].set_xlabel('Predito')
-            
-            sns.heatmap(cm_knn, annot=True, fmt='d', cmap='Greens', ax=axes[1],
-                       xticklabels=['Fake', 'Real'], yticklabels=['Fake', 'Real'])
-            axes[1].set_title('Matriz de Confusão - KNN', fontweight='bold')
-            axes[1].set_ylabel('Verdadeiro')
-            axes[1].set_xlabel('Predito')
-            
-            plt.tight_layout()
-            plt.savefig(save_dir / 'confusion_matrices_comparison.png', dpi=300, bbox_inches='tight')
-            plt.close()
+            print(f"\nAUC-ROC: {auc:.4f}")
 
         print(f"Visualizações salvas em: {save_dir}")
 
-    def analyze_single_image(self, image_path, save_dir=None, use_knn=False):
-        """Analisa uma imagem individual usando RF ou KNN e plota no plano CH.
+    def analyze_single_image(self, image_path, save_dir=None):
+        """Analisa uma imagem individual e plota no plano CH com predição.
         
         Parâmetros:
             image_path (str|Path): caminho da imagem a analisar.
             save_dir (str|Path|None): diretório para salvar a visualização.
-            use_knn (bool): se True, usa KNN; caso contrário, usa RF.
-        """
-        model = self.model_knn if use_knn else self.model_rf
-        model_name = "KNN" if use_knn else "Random Forest"
         
-        if model is None:
-            print(f"Modelo {model_name} não treinado. Execute train_and_evaluate() primeiro.")
+        Retorna:
+            dict com: features, predição, probabilidades e path da figura (se salvo).
+        """
+        if self.model is None:
+            print("Modelo não treinado. Execute train_and_evaluate() primeiro.")
             return None
         
         print(f"\n{'='*60}")
-        print(f"Analisando imagem com {model_name}: {Path(image_path).name}")
+        print(f"Analisando imagem individual: {Path(image_path).name}")
         print("="*60)
         
         # Carrega e extrai features
@@ -636,12 +541,12 @@ class EdgeFocusedDeepfakeAnalyzer:
         X_single_scaled = self.scaler.transform(X_single)
         
         # Predição
-        pred = model.predict(X_single_scaled)[0]
-        proba = model.predict_proba(X_single_scaled)[0]
-        classes = model.classes_
+        pred = self.model.predict(X_single_scaled)[0]
+        proba = self.model.predict_proba(X_single_scaled)[0]
+        classes = self.model.classes_
         proba_dict = {cls: prob for cls, prob in zip(classes, proba)}
         
-        print(f"\nPredição ({model_name}): {pred.upper()}")
+        print(f"\nPredição: {pred.upper()}")
         print(f"Probabilidades: Fake={proba_dict.get('fake', 0):.3f} | Real={proba_dict.get('real', 0):.3f}")
         
         # Plota nos planos CH multi-escala
@@ -659,18 +564,19 @@ class EdgeFocusedDeepfakeAnalyzer:
         real = self.features_df[self.features_df['label'] == 'real']
         fake = self.features_df[self.features_df['label'] == 'fake']
         
-        marker_color = 'darkgreen' if use_knn else 'darkred' if pred == 'fake' else 'darkblue'
-        
         for ax, dx in zip(axes, valid_dims):
             h_col, c_col = f'd{dx}_H_mean', f'd{dx}_C_mean'
             
+            # Plota dataset de referência
             ax.scatter(real[h_col], real[c_col], s=30, alpha=0.4,
                       label='Real (ref)', color='blue', edgecolors='none')
             ax.scatter(fake[h_col], fake[c_col], s=30, alpha=0.4,
                       label='Fake (ref)', color='red', edgecolors='none')
             
+            # Plota imagem analisada
             h_val = feats.get(h_col, 0)
             c_val = feats.get(c_col, 0)
+            marker_color = 'darkred' if pred == 'fake' else 'darkblue'
             marker_style = 's' if pred == 'fake' else 'D'
             
             ax.scatter(h_val, c_val, s=300, alpha=0.9,
@@ -683,28 +589,34 @@ class EdgeFocusedDeepfakeAnalyzer:
             ax.grid(True, alpha=0.3)
             ax.legend(loc='best', fontsize=9)
         
-        plt.suptitle(f'{model_name}: {Path(image_path).name} → {pred.upper()}', 
+        plt.suptitle(f'Análise: {Path(image_path).name} → {pred.upper()}', 
                     fontweight='bold', fontsize=14)
         plt.tight_layout()
         
+        # Salva figura
         fig_path = None
         if save_dir:
             save_dir = Path(save_dir)
             save_dir.mkdir(exist_ok=True)
-            model_suffix = "knn" if use_knn else "rf"
-            fig_name = f"analise_{Path(image_path).stem}_{model_suffix}.png"
+            fig_name = f"analise_{Path(image_path).stem}.png"
             fig_path = save_dir / fig_name
             plt.savefig(fig_path, dpi=300, bbox_inches='tight')
             print(f"\nVisualização salva: {fig_path}")
         
         plt.show()
         
+        # Mostra features principais
+        print("\nFeatures principais (primeiras 10):")
+        sorted_feats = sorted(feats.items(), key=lambda x: abs(x[1]), reverse=True)
+        for k, v in sorted_feats[:10]:
+            if not k.endswith('n_series'):
+                print(f"   {k:30s}: {v:.4f}")
+        
         return {
             'prediction': pred,
             'probabilities': proba_dict,
             'features': feats,
-            'figure_path': fig_path,
-            'model_used': model_name
+            'figure_path': fig_path
         }
 
 def main():
@@ -713,9 +625,16 @@ def main():
     Fluxo:
         1. Validamos ordpy com um teste rápido.
         2. Percorre datasets configurados, extrai features e salva CSV.
-        3. Treina classificadores RandomForest e KNN (optionally grid-search).
-        4. Gera visualizações comparativas (plano CH, ROC RF vs KNN) e salva em results/.
-        5. Oferece modo interativo para análise de imagem individual com ambos os modelos.
+        3. Treina um classificador RandomForest (optionally grid-search).
+        4. Gera visualizações (plano CH, ROC) e salva em results/.
+        5. (NOVO) Oferece modo interativo para análise de imagem individual.
+
+    Resultado:
+        Arquivos salvos em /home/zerocopia/Projetos/mestrado/results por padrão:
+         - features_final_bordas.csv
+         - plano_ch_multiescala.png
+         - roc_curve.png (se disponível)
+         - analise_<nome_imagem>.png (análise individual)
     """
 
     # Smoke-test do ordpy
@@ -778,11 +697,11 @@ def main():
             print("H_mean por classe:\n", analyzer.features_df.groupby('label')[h_col].describe())
             print("C_mean por classe:\n", analyzer.features_df.groupby('label')[c_col].describe())
 
-    # Treino/avaliação (RF e KNN)
+    # Treino/avaliação
     eval_results = analyzer.train_and_evaluate(test_size=0.25, optimize=False)
 
-    # Visualizações comparativas
-    print("\nGerando visualizações comparativas...")
+    # Visualizações (inclui ROC se eval_results não for None)
+    print("\nGerando visualizações...")
     analyzer.create_visualizations(results_dir, eval_results=eval_results)
 
     print("\n" + "="*60)
@@ -791,14 +710,13 @@ def main():
     print("Arquivos gerados em:", results_dir)
     print("  - features_final_bordas.csv")
     print("  - plano_ch_multiescala.png")
-    print("  - roc_curve_comparison.png (RF vs KNN)")
-    print("  - confusion_matrices_comparison.png")
+    print("  - roc_curve.png (se RF disponível)")
     
     # Modo interativo para análise individual
     print("\n" + "="*60)
     print("ANÁLISE DE IMAGEM INDIVIDUAL")
     print("="*60)
-    print("Você pode analisar uma imagem específica com RF ou KNN.")
+    print("Você pode analisar uma imagem específica e plotá-la no plano CH.")
     print("Digite o caminho da imagem ou 'sair' para encerrar.\n")
     
     while True:
@@ -811,12 +729,9 @@ def main():
             print(f"Arquivo não encontrado: {img_path}\n")
             continue
         
-        model_choice = input("Usar qual modelo? (rf/knn) [rf]: ").strip().lower() or 'rf'
-        use_knn = model_choice == 'knn'
-        
-        result = analyzer.analyze_single_image(img_path, save_dir=results_dir, use_knn=use_knn)
+        result = analyzer.analyze_single_image(img_path, save_dir=results_dir)
         if result:
-            print(f"\nAnálise concluída para: {img_path.name} usando {result['model_used']}\n")
+            print(f"\nAnálise concluída para: {img_path.name}\n")
         print("-"*60 + "\n")
     
     print("\nEncerrando análise interativa.")
