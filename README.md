@@ -198,6 +198,56 @@ A seguir estão os datasets utilizados neste trabalho. Para cada um fornecemos u
 - **Contribuição:** Metodologia PICOC para revisão sistemática
 - **Aplicação:** Estruturação da pesquisa bibliográfica
 
+## 📐 Entropia Ordinal (Permutation Entropy) e Complexidade: Objetivos e Capacidades
+
+### O que é entropia ordinal (permutation entropy)
+- Ideia: mede a desordem de uma série temporal a partir da ordem relativa dos valores (método de Bandt–Pompe).
+- Passos:
+  1) Parâmetros: dimensão de embedding d e atraso τ.
+  2) Constrói vetores [x_t, x_{t+τ}, …, x_{t+(d−1)τ}] ao longo da série.
+  3) Para cada vetor, extrai o padrão ordinal (permutação que ordena seus elementos).
+  4) Estima a distribuição P dos d! padrões ao longo da série.
+  5) Entropia ordinal H = entropia de Shannon de P normalizada por log(d!). Assim, 0 ≤ H ≤ 1.
+     - H≈0: dinâmica altamente ordenada (poucos padrões). H≈1: dinâmica aleatória (padrões quase equiprováveis).
+- Complexidade estatística C (via ordpy): mede “estrutura” entre ordem e aleatoriedade. Usualmente combina a divergência de Jensen–Shannon entre P e a distribuição uniforme com a própria entropia, resultando em 0 ≤ C ≤ 1 e máximo em regimes “entre” ordem e ruído.
+- H_bits no código: H_bits = H × log2(d!) converte a entropia normalizada para bits “por padrão”.
+
+### Como aplicamos isso às imagens
+- Converte a imagem em várias séries 1D guiadas por bordas/gradientes (contornos do Canny, linhas/colunas com alto Sobel, patches com alta transição, alta frequência, direção de gradiente).
+- Em cada série, calcula H e C com ordpy para múltiplas d (multi-escala).
+- Agrega estatísticas (média, desvio, quantis, skew, kurt) de H, C e H_bits por d, além de correlação H–C e contagem de séries válidas.
+- Acrescenta estatísticas globais dos mapas de borda (média, std, max, “entropia” de histograma).
+- Treina RandomForest nas features e gera visualizações (plano H×C e ROC).
+
+### Objetivos implementados até aqui
+- Implementa extração de features baseadas em bordas e entropia ordinal (Complexidade–Entropia) para diferenciar imagens reais de sintéticas.
+  - Núcleo: transformar estruturas de borda/gradiente em séries e medir H e C para capturar diferenças de regularidade/ruído entre real e sintético.
+- Foco em representações de borda/gradiente e séries extraídas de contornos, linhas/colunas e patches de alta transição.
+  - Bordas evidenciam inconsistências típicas de síntese (contornos, texturas, transições de iluminação). As séries derivadas concentram a análise CECP onde há maior informação discriminativa.
+
+### Principais capacidades
+- Extração multi-escala de entropia (H) e complexidade (C) via ordpy.
+  - Usa d em [3,4,5,6] (multi_scale=True) e τ=1. Para cada d de série: ordpy.complexity_entropy retorna H∈[0,1] e C∈[0,1]. O código agrega estatísticas por d.
+- Versão alternativa H_bits = H × log2(d!) para interpretação em bits.
+  - Converte H normalizado para bits, facilitando a leitura em termos do alfabeto de padrões (d!).
+- Múltiplas representações de borda (Canny, Sobel, Laplacian, Scharr).
+  - Gera mapas de arestas, magnitude e direção de gradiente, Laplaciano e componente de alta frequência; computa estatísticas globais como features auxiliares.
+- Séries orientadas por bordas (contornos, linhas de alto gradiente, patches).
+  - Extrai valores ao longo de contornos Canny; linhas/colunas onde Sobel é alto; patches com forte transição de iluminação; linhas de alta frequência; e séries da direção do gradiente. Séries com baixa variância são filtradas.
+- Treino e avaliação com RandomForest; geração de visualizações (plano CH, ROC).
+  - Processa datasets, consolida features, padroniza, treina RF (com opção de GridSearch), reporta métricas e plota H_mean vs C_mean por d (plano CH) e curva ROC/AUC.
+
+### Onde isso está no código (v3.py)
+- Pré-processamento e bordas: load_and_preprocess_image, extract_edge_regions.
+- Séries focadas: extract_edge_focused_series e baseline _extract_traditional_series.
+- Medidas H, C, H_bits: compute_ordinal_features_corrected (usa ordpy.complexity_entropy).
+- Estatísticas e robustez: agregações por d, limpeza de NaN/Inf, features de borda globais.
+- Pipeline: process_dataset, train_and_evaluate, create_visualizations, main.
+
+### Repositório ordpy
+- Biblioteca Python para análise ordinal de séries: oferece complexity_entropy (H e C normalizados), permutation_entropy e utilitários de padrões ordinais.
+- Link: https://github.com/fabio-linhares/ordpy
+
 ## 🔍 **PICOC: Implementação e Resultados**
 
 Para estruturar sistematicamente a revisão da literatura, utilizaremos o protocolo **PICOC (Population, Intervention, Comparison, Outcomes, Context)**, que fornece um framework robusto para a formulação de questões de pesquisa e busca bibliográfica:
@@ -419,6 +469,74 @@ Estas 7 questões criam uma avaliação completa que analisa:
 
 ---
 
+
+## 📈 Resultados Iniciais (v3.py — Bordas + Entropia Ordinal)
+
+Os primeiros experimentos foram feitos com foco em bordas/gradientes, extraindo séries 1D orientadas por arestas e computando (H,C) multi-escala via ordpy.
+
+- Amostras: 800 imagens (400 reais, 400 sintéticas)
+- Escalas (d): [3, 4, 5, 6], τ=1
+- Features: 112 (estatísticas de H, C, H_bits e métricas globais de borda)
+- Classificador: Random Forest
+- Desempenho:
+  - Acurácia teste: 73,5% (treino: 100% — indício de overfitting)
+  - CV (5-fold): 0,738 ± 0,034
+  - AUC-ROC: 0,846
+
+### 🔎 Interpretação dos Planos CH (multi-escala)
+
+![Planos CH multi-escala](results/plano_ch_multiescala.png)
+
+- Tendência geral (todas as escalas): H_fake > H_real — séries guiadas por bordas em imagens sintéticas apresentam maior desordem ordinal.
+- Complexidade C:
+  - d=3,4,5: C_fake < C_real — sintéticas mais “aleatórias” nas escalas menores/médias (menos estrutura ordinal).
+  - d=6: C_fake > C_real — cruzamento em escala maior, sugerindo que padrões determinísticos residuais das sintéticas emergem em janelas mais longas.
+- Separabilidade visual:
+  - d=3: boa separação por H (fake mais alto) e C (fake mais baixo).
+  - d=4–5: separação ainda presente, porém mais tênue.
+  - d=6: separação por C se inverte, oferecendo complementaridade multi-escala.
+
+Esses padrões são consistentes com a hipótese de que produtos de IA exibem assinatura distinta no Plano CH: mais entropia (H) e estrutura dependente da escala (C).
+
+### 📉 Curva ROC
+
+![Curva ROC (Random Forest)](results/roc_rf.png)
+
+- AUC=0,846 indica bom poder discriminativo com threshold livre.
+- Na matriz de confusão (threshold padrão 0,5): recall_fake ≈ 0,71, recall_real ≈ 0,76 (equilíbrio razoável entre classes).
+
+### 📌 Estatísticas resumidas por classe (médias)
+
+- H_mean (fake vs. real):
+  - d=3: 0,841 vs. 0,770
+  - d=4: 0,757 vs. 0,663
+  - d=5: 0,694 vs. 0,607
+  - d=6: 0,612 vs. 0,541
+- C_mean (fake vs. real):
+  - d=3: 0,114 vs. 0,150
+  - d=4: 0,190 vs. 0,226
+  - d=5: 0,294 vs. 0,312
+  - d=6: 0,428 vs. 0,406
+
+Resumo: sintéticas têm H consistentemente maior; C é menor em d∈{3,4,5} e maior em d=6 (padrão de cruzamento).
+
+### 🌟 Importância de features (Top)
+
+- Destaques: estatísticas de C (std/kurt/mean) em d=3–5, quantis de H (q75) e distância H–C (d3_CH_dist).
+- Sinal: a forma da distribuição de C e quantis de H concentram boa parte da separação.
+
+### ⚠️ Observações e Próximos Passos
+
+- Overfitting: acurácia de treino 100% vs. teste 73,5% sugere regularização/seleção de features e validação mais rígida (nested CV).
+- Robustez: avaliar cross-dataset, perturbações (compressão/ruído) e calibração de threshold.
+- Engenharia de séries: aumentar diversidade de séries orientadas por bordas (amostragem adaptativa em contornos longos) e investigar atrasos τ>1.
+- Classificadores: comparar com modelos lineares e GBDT (XGBoost/LightGBM) + seleção (boruta/shap) e redução (PCA).
+
+Arquivos gerados:
+- CSV de features: `results/features_final_bordas.csv`
+- Figuras: `results/plano_ch_multiescala.png`, `results/roc_rf.png`
+
+---
 
 ## 🔧 **Ambiente de Desenvolvimento**
 
