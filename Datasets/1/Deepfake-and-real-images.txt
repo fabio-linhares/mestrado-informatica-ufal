@@ -1,0 +1,8 @@
+deepfake and real images
+
+This dataset contains manipulated images and real images. The manipulated images are the faces which are created by various means. The source for this dataset was https://zenodo.org/record/5528418#.YpdlS2hBzDd
+this dataset was processed as our will to get maximum outcome out of these images. Each image is a 256 X 256 jpg image of human face either real or fake
+
+Font: https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images
+Author Name: Trung-Nghia Le
+License: Unknown

@@ -1,0 +1,8 @@
+Detect AI-Generated Faces: High-Quality Dataset
+
+This dataset contains high-quality images of both real human faces and AI-generated synthetic faces, designed for machine learning and deep learning applications. It provides a valuable resource for developing and testing classifiers capable of distinguishing between authentic and AI-generated facial images. Ideal for tasks such as deepfake detection, image authenticity verification, and facial image analysis, this dataset is meticulously curated to support cutting-edge research and applications.
+
+Font: https://www.kaggle.com/datasets/shahzaibshazoo/detect-ai-generated-faces-high-quality-dataset
+Author Name: -
+License: Apache 2.0
+
